@@ -1,0 +1,67 @@
+package com.example.csms.bean;
+
+
+public class Administrator {
+
+  private long administratorId;
+  private String administratorPassword;
+  private String administratorName;
+  private String administratorGender;
+  private String administratorAddress;
+  private String administratorEmail;
+
+
+  public long getAdministratorId() {
+    return administratorId;
+  }
+
+  public void setAdministratorId(long administratorId) {
+    this.administratorId = administratorId;
+  }
+
+
+  public String getAdministratorPassword() {
+    return administratorPassword;
+  }
+
+  public void setAdministratorPassword(String administratorPassword) {
+    this.administratorPassword = administratorPassword;
+  }
+
+
+  public String getAdministratorName() {
+    return administratorName;
+  }
+
+  public void setAdministratorName(String administratorName) {
+    this.administratorName = administratorName;
+  }
+
+
+  public String getAdministratorGender() {
+    return administratorGender;
+  }
+
+  public void setAdministratorGender(String administratorGender) {
+    this.administratorGender = administratorGender;
+  }
+
+
+  public String getAdministratorAddress() {
+    return administratorAddress;
+  }
+
+  public void setAdministratorAddress(String administratorAddress) {
+    this.administratorAddress = administratorAddress;
+  }
+
+
+  public String getAdministratorEmail() {
+    return administratorEmail;
+  }
+
+  public void setAdministratorEmail(String administratorEmail) {
+    this.administratorEmail = administratorEmail;
+  }
+
+}

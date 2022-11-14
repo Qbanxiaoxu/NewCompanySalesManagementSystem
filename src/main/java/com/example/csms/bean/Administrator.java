@@ -1,6 +1,9 @@
 package com.example.csms.bean;
 
 
+/**
+ * @author 徐兴盼
+ */
 public class Administrator {
 
   private long administratorId;

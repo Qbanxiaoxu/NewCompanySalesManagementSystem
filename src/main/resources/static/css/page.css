@@ -1,0 +1,57 @@
+ /*兼容浏览器*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color:white;
+    background-color: cadetblue;
+    text-align: center;
+}
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+.content-left {
+    width: 25%;
+    height: 800px;
+    background-color: darkcyan;
+    float: left;
+}
+
+.content-right {
+    width: 75%;
+    height: 800px;
+    background-color: azure;
+    border:1px solid;
+    text-align: center;
+}
+ul{
+    text-decoration: none;
+    text-align:center;
+}
+.menu{
+
+}
+/*标题一样式*/
+.menu-title1
+{
+    font-size: 25px;
+    color:white;
+}
+/*标题二样式*/
+.menu-title2
+{
+    font-size:20px;
+    color:white;
+}
+/*鼠标经过子标题时改变样式*/
+.menu-title2:hover{
+    color: #FFFFFF;
+    background-color: mediumturquoise;
+}
+.form-style{
+    font-size: 25px;
+}

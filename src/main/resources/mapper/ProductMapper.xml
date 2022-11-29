@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper">
+    <select id="getAll" resultType="com.example.csms.bean.Product">
+        SELECT * FROM products
+    </select>
+    <select id="searchById" parameterType="long" resultType="com.example.csms.bean.Product">
+        SELECT * FROM products where pID=#{pId}
+    </select>
+</mapper>

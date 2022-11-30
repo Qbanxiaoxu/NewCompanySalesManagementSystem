@@ -11,4 +11,13 @@
     <select id="findSalesStaff" parameterType="String" resultType="com.example.csms.bean.SalesStaff">
         select salesStaffId,salesStaffPassword,salesStaffName,salesStaffGender,salesStaffAddress,salesStaffEmail,salesStaffSalary from salesstaffs where salesStaffName=#{username} and salesStaffPassword=#{password}
     </select>
+    <select id="findOrder" resultType="com.example.csms.bean.Order">
+        select orderId, orderTime, clientId, salesStaffId, consumption from orders where orderId=#{orderId}
+    </select>
+    <select id="findOrderDetail" resultType="com.example.csms.bean.OrderDetail">
+        select orderDetailId, productId, productNumber, totalPrice from orderdetails where orderDetailId=#{orderDetailId}
+    </select>
+    <select id="findProduct" resultType="com.example.csms.bean.Product">
+        select productId, productName, productDescription, productPrice, productInventory from products where productId=#{productId}
+    </select>
 </mapper>

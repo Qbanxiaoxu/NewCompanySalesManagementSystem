@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.QueryMapper">
+    <select id="queryAdministrators" resultType="com.example.csms.bean.Administrator">
+        select administratorId, administratorPassword, administratorName, administratorGender, administratorAddress, administratorEmail from administrators
+    </select>
+    <select id="queryClients" resultType="com.example.csms.bean.Client">
+        select clientId, clientPassword, clientName, clientGender, clientAddress, clientEmail from clients
+    </select>
+    <select id="querySalesStaffs" resultType="com.example.csms.bean.SalesStaff">
+        select salesStaffId, salesStaffPassword, salesStaffName, salesStaffGender, salesStaffAddress, salesStaffEmail, salesStaffSalary from salesstaffs
+    </select>
+    <select id="queryOrders" resultType="com.example.csms.bean.Order">
+        select orderId, orderTime, clientId, salesStaffId, consumption from orders
+    </select>
+    <select id="queryProducts" resultType="com.example.csms.bean.Product">
+        select productId, productName, productDescription, productPrice, productInventory from products
+    </select>
+    <select id="queryOrderDetails" resultType="com.example.csms.bean.OrderDetail">
+        select orderDetailId, productId, productNumber, totalPrice from orderdetails
+    </select>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.FindMapper">
+    <select id="findAdministrator" parameterType="String" resultType="com.example.csms.bean.Administrator">
+        select administratorId,administratorPassword,administratorName,administratorGender,administratorAddress,administratorEmail from administrators where administratorName=#{username} and administratorPassword=#{password}
+    </select>
+    <select id="findClient" parameterType="String" resultType="com.example.csms.bean.Client">
+        select clientId,clientPassword,clientName,clientGender,clientAddress,clientEmail from clients where clientName=#{username} and clientPassword=#{password}
+    </select>
+    <select id="findSalesStaff" parameterType="String" resultType="com.example.csms.bean.SalesStaff">
+        select salesStaffId,salesStaffPassword,salesStaffName,salesStaffGender,salesStaffAddress,salesStaffEmail,salesStaffSalary from salesstaffs where salesStaffName=#{username} and salesStaffPassword=#{password}
+    </select>
+</mapper>

@@ -204,13 +204,23 @@
             <div class="formBx">
                 <form action="/LoginVerify" method="post">
                     <h2>Sign In</h2>
-                    <input type="text" name="username" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
+                    <label>
+                        <input type="text" name="username" placeholder="Username">
+                    </label>
+                    <label>
+                        <input type="password" name="password" placeholder="Password">
+                    </label>
                     <table>
                         Identity:<tr>
-                        <td><input type="radio" name="identity" value="client"/>client</td>
-                        <td><input type="radio" name="identity" value="salesstaff"/>sales staff</td>
-                        <td><input type="radio" name="identity" value="manager"/>manager</td>
+                        <td><label>
+                            <input type="radio" name="identity" value="client"/>
+                        </label>client</td>
+                        <td><label>
+                            <input type="radio" name="identity" value="sales staff"/>
+                        </label>sales staff</td>
+                        <td><label>
+                            <input type="radio" name="identity" value="manager"/>
+                        </label>manager</td>
                     </tr>
                     </table>
                     <input type="submit" name="" value="Sign in">
@@ -232,7 +242,7 @@
                     <table>
                         Identity:<tr>
                         <td><input type="radio" name="identity" value="customer"/>client</td>
-                        <td><input type="radio" name="identity" value="salesstaff"/>sales staff</td>
+                        <td><input type="radio" name="identity" value="sales staff"/>sales staff</td>
                         <td><input type="radio" name="identity" value="manager"/>manager</td>
                     </tr>
                     </table>
@@ -247,13 +257,16 @@
 </section>
 <script type="text/javascript">
     window.onload=function () {
-        var error = window.location.search;
-        if (error=="?error=yes"){
-            alert("Login failed!")
+        let loginState = window.location.search;
+        if (loginState==="?error=yes"){
+            alert("Wrong login information!")
+        }
+        if(loginState==="?empty=yes"){
+            alert("Account or password or identity is empty!")
         }
     }
     function topggleForm(){
-        var container = document.querySelector('.container');
+        let container = document.querySelector('.container');
         container.classList.toggle('active');
     }
 </script>

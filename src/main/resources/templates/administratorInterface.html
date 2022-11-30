@@ -4,26 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员界面</title>
-    <script src="js/jQuery3.6.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/page.css">
-    <script src="js/administratorInterface.js"></script>
+    <script src="../static/js/jQuery3.6.1.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{../static/css/page.css}">
+    <script th:src="@{../static/js/administratorInterface.js}"></script>
 </head>
 <body>
-<%! int ID;String username;String password;String identity;String gender;String email;String address;
-%>
-<%
-    username=request.getParameter("username");
-    password=request.getParameter("password");
-    identity=request.getParameter("identity");
-    Administrator administrator=new Administrator(username,password);
-    try {
-        ID=administrator.getID();
-        gender=administrator.getGender();
-        email=administrator.getEmail();
-        address=administrator.getAddress();
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    }%>
 <input type="hidden" id="username" name="username" value="<%=username%>">
 <input type="hidden" id="password" name="password" value="<%=password%>">
 <input type="hidden" id="identity" name="identity" value="<%=identity%>">

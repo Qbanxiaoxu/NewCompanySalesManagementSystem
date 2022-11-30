@@ -18,21 +18,6 @@
     </style>
 </head>
 <body>
-<%! int ID;String username;String password;String identity;String gender;String email;String address;
-%>
-<%
-    username=request.getParameter("username");
-    password=request.getParameter("password");
-    identity=request.getParameter("identity");
-    SalesStaff salesStaff=new SalesStaff(username,password);
-    try {
-        ID=salesStaff.getID();
-        gender=salesStaff.getGender();
-        email=salesStaff.getEmail();
-        address=salesStaff.getAddress();
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    }%>
 <input type="hidden" id="username" name="username" value="<%=username%>">
 <input type="hidden" id="password" name="password" value="<%=password%>">
 <input type="hidden" id="identity" name="identity" value="<%=identity%>">

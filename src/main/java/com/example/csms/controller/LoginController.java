@@ -20,11 +20,4 @@ public class LoginController {
     public String loginView(){
         return "loginView";
     }
-    @RequestMapping(value = "/LoginVerify",method = RequestMethod.POST)
-    public String loginMethod(@RequestParam("username")String username,@RequestParam("password")String password,@RequestParam("identity")String identity){
-        if ((Objects.equals(password, "")) || (Objects.equals(identity, ""))||Objects.equals(username, "")) {
-            return "redirect:loginView?error=yes";
-        }
-        return "";
-    }
 }

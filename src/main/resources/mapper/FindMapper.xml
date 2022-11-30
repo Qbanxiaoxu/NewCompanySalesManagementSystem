@@ -20,4 +20,13 @@
     <select id="findProduct" resultType="com.example.csms.bean.Product">
         select productId, productName, productDescription, productPrice, productInventory from products where productId=#{productId}
     </select>
+    <select id="findAdministratorById" resultType="com.example.csms.bean.Administrator">
+        select administratorId, administratorPassword, administratorName, administratorGender, administratorAddress, administratorEmail from administrators where administratorId=#{administratorId}
+    </select>
+    <select id="findClientById" resultType="com.example.csms.bean.Client">
+        select clientId, clientPassword, clientName, clientGender, clientAddress, clientEmail from clients where clientId=#{clientId}
+    </select>
+    <select id="findSalesStaffById" resultType="com.example.csms.bean.SalesStaff">
+        select salesStaffId, salesStaffPassword, salesStaffName, salesStaffGender, salesStaffAddress, salesStaffEmail, salesStaffSalary from salesstaffs where salesStaffId=#{salesStaffId}
+    </select>
 </mapper>

@@ -12,11 +12,5 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class ProductController {
     @Resource
     ProductService productService;
-
-    //映射到service层的getAllInfo方法
-    @RequestMapping(value="/getAllInfo",method = POST)
-    public Product getAllInfoMethod()
-    {
-
-    }
 }
+-r[r]

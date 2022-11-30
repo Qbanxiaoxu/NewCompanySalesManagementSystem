@@ -7,7 +7,7 @@ $(document).ready(() => {
                 ID:document.getElementById("id").value()
             },
             function(data,status){
-                if (status === "success") {
+                if (status =="success") {
                     $("#display").html("");
                     let personalList = JSON.parse(data);
                     let html = "<table style=\"width: 100%\" border='1px'> <tr><th colspan=\"5\">个人信息</th></tr><tr><td>编号</td><td>姓名</td><td>性别</td><td>邮箱</td><td>住址</td></tr>"

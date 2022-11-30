@@ -29,7 +29,7 @@ public class LoginVerifyController {
         String password = request.getParameter("password");
         // 获取身份
         String identity = request.getParameter("identity");
-        if (("".equals(password)) || ("".equals(identity))||("".equals(username))) {
+        if (("".equals(password)) || identity==null ||("".equals(username))) {
             return "redirect:/loginView?empty=yes";
         }else {
             Administrator administrator = null;

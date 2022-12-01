@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.GetMapper">
+    <select id="get" resultType="int">
+        select administratorId,administratorPassword,administratorName,administratorGender,administratorAddress,administratorEmail from administrators where administratorName=#{username} and administratorPassword=#{password}
+    </select>
+    <select id="findClient" resultType="int">
+        select clientId,clientPassword,clientName,clientGender,clientAddress,clientEmail from clients where clientName=#{username} and clientPassword=#{password}
+    </select>
+    <select id="findSalesStaff" resultType="com.example.csms.bean.SalesStaff">
+        select salesStaffId,salesStaffPassword,salesStaffName,salesStaffGender,salesStaffAddress,salesStaffEmail,salesStaffSalary from salesstaffs where salesStaffName=#{username} and salesStaffPassword=#{password}
+    </select>
+    <select id="getOrderQuantity" resultType="java.lang.Integer">
+        select count(*) from orders
+    </select>
+    <select id="getAdministratorsNumber" resultType="java.lang.Integer">
+        select count(*) from administrators
+    </select>
+    <select id="getClientsNumber" resultType="java.lang.Integer">
+        select count(*) from clients
+    </select>
+    <select id="getSalesStaffsNumber" resultType="java.lang.Integer">
+        select count(*) from salesstaffs
+    </select>
+    <select id="getOrderDetailsNumber" resultType="java.lang.Integer">
+        select count(*) from orderdetails
+    </select>
+    <select id="getProductsNumber" resultType="java.lang.Integer">
+        select count(*) from products
+    </select>
+</mapper>

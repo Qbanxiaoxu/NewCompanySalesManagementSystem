@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.DeleteMapper">
+<!--    DELETE FROM table_name WHERE some_column=some_value;-->
+    <delete id="deleteAdministrator">
+        delete from administrators where administratorId=#{administratorId}
+    </delete>
+    <delete id="deleteClient">
+        delete from clients where clientId=#{clientId}
+    </delete>
+    <delete id="deleteSalesStaff">
+        delete from salesstaffs where salesStaffId=#{salesStaffId}
+    </delete>
+    <delete id="deleteOrder">
+        delete
+        from orders
+        where orderId=#{orderId};
+    </delete>
+    <delete id="deleteProduct">
+        delete from products where productId=#{productId}
+    </delete>
+    <delete id="deleteOrderDetails">
+        delete from orderdetails
+    </delete>
+    <delete id="deleteOrderDetailById">
+        delete from orderdetails where orderDetailId=#{orderDetailId}
+    </delete>
+</mapper>

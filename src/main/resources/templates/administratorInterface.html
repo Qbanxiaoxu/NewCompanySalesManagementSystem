@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<!--    <base th:href="@{/}">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员界面</title>
-    <script src="../static/js/jQuery3.6.1.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{../static/css/page.css}">
-    <script th:src="@{../static/js/administratorInterface.js}"></script>
+    <script th:src="@{/js/jQuery3.6.1.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/page.css}">
+    <script type="text/javascript" th:src="@{/js/administratorInterface.js}"></script>
 </head>
 <body>
 <input type="hidden" id="username" name="username" value="<%=username%>">

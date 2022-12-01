@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.AddMapper">
+    <insert id="addAdministrator" parameterType="com.example.csms.bean.Administrator">
+        INSERT INTO administrators (administratorPassword, administratorName, administratorGender, administratorAddress, administratorEmail) VALUES (#{administratorPassword},#{administratorName},#{administratorGender},#{administratorAddress},#{administratorEmail})
+    </insert>
+    <insert id="addClient" parameterType="com.example.csms.bean.Client">
+        insert into clients (clientPassword,clientName,clientGender,clientAddress,clientEmail) values (#{clientPassword},#{clientName},#{clientGender},#{clientAddress},#{clientEmail})
+    </insert>
+    <insert id="addOrder" parameterType="com.example.csms.bean.Order">
+        insert into orders(orderTime, clientId, salesStaffId, consumption) VALUES (#{orderTime},#{orderClientId},#{orderSalesStaffId},#{orderConsumption})
+    </insert>
+    <insert id="addOrderDetail" parameterType="com.example.csms.bean.OrderDetail">
+        INSERT INTO orderdetails(orderDetailId, productId, productNumber, totalPrice) VALUES (#{orderDetailId},#{productId},#{productNumber},#{totalPrice})
+    </insert>
+    <insert id="addProduct" parameterType="com.example.csms.bean.Product">
+        INSERT INTO products (productName, productDescription, productPrice, productInventory) VALUES (#{productName},#{productDescription},#{productPrice},#{productInventory})
+    </insert>
+    <insert id="addSalesStaff" parameterType="com.example.csms.bean.SalesStaff">
+        INSERT INTO salesstaffs (salesStaffPassword, salesStaffName, salesStaffGender, salesStaffAddress, salesStaffEmail, salesStaffSalary) VALUES (#{salesStaffPassword},#{salesStaffName},#{salesStaffGender},#{salesStaffAddress},#{salesStaffEmail},#{salesStaffSalary});
+    </insert>
+</mapper>

@@ -1,35 +1,49 @@
 //对产品进行操作的函数
 $(function () {
     //获取登录人的用户名和密码
-    let userName=getUrlParam('username');
-    let psd=getUrlParam('password');
+
     alert(psd);
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数
         if (r != null) return unescape(r[2]); return null; //返回参数值
     }
-    //显示所有客户
-    $("#getAllClientBtn").click("click",function () {
+    $("#selfInformationManagement").click("click",function () {
+        let userName=getUrlParam('username');
+        let psd=getUrlParam('password');
         $.post(
-            '/Query',
-            {object:'Client'},
+            '/CheckTakeOrders',
+            {username:userName,password:psd},
             function (data) {
-                $("#showClientTable").find('tr').remove();
-                for(i in data)
-                {
-                    let tds;
-                    tds='<td>'+data[i].clientId+'</td>'+
-                        '<td>'+data[i].clientPassword+'</td>'+
-                        '<td>'+data[i].clientName+'</td>'+
-                        '<td>'+data[i].clientGender+'</td>'+
-                        '<td>'+data[i].clientAddress+'</td>'+
-                        '<td>'+data[i].clientEmail+'</td>';
-                    $("#showClientTable").append('<tr>'+tds+'</tr>');
-                }
-            }
+                $("#showSelfInformationTable").find('tr').remove();
+                let tds;
+                // tds='<td>'+data.+'</td>'
+
+            },
+            'json'
         )
-    });
+    })
+    //显示所有客户
+    // $("#getAllClientBtn").click("click",function () {
+    //     $.post(
+    //         '/Query',
+    //         {object:'Client'},
+    //         function (data) {
+    //             $("#showClientTable").find('tr').remove();
+    //             for(i in data)
+    //             {
+    //                 let tds;
+    //                 tds='<td>'+data[i].clientId+'</td>'+
+    //                     '<td>'+data[i].clientPassword+'</td>'+
+    //                     '<td>'+data[i].clientName+'</td>'+
+    //                     '<td>'+data[i].clientGender+'</td>'+
+    //                     '<td>'+data[i].clientAddress+'</td>'+
+    //                     '<td>'+data[i].clientEmail+'</td>';
+    //                 $("#showClientTable").append('<tr>'+tds+'</tr>');
+    //             }
+    //         }
+    //     )
+    // });
     //通过客户编号显示客户
     $("#getClientByIdBtn").click("click",function () {
         let cId=$("#searchClientBox").val();

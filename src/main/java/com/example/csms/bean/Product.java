@@ -12,6 +12,7 @@ public class Product {
   private long productInventory;
 
 
+  public Product(){}
   public long getProductId() {
     return productId;
   }

@@ -13,7 +13,7 @@ public class SalesStaff {
   private String salesStaffEmail;
   private long salesStaffSalary;
 
-
+  public SalesStaff(){}
   public long getSalesStaffId() {
     return salesStaffId;
   }

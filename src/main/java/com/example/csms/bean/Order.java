@@ -12,6 +12,7 @@ public class Order {
   private double consumption;
 
 
+  public Order(){}
   public long getOrderId() {
     return orderId;
   }

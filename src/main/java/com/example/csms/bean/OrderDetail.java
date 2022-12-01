@@ -11,6 +11,7 @@ public class OrderDetail {
   private double totalPrice;
 
 
+  public OrderDetail(){}
   public long getOrderDetailId() {
     return orderDetailId;
   }

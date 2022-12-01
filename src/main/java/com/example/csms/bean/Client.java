@@ -13,6 +13,7 @@ public class Client {
   private String clientEmail;
 
 
+  public Client(){}
   public long getClientId() {
     return clientId;
   }

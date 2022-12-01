@@ -14,6 +14,7 @@ public class Administrator {
   private String administratorEmail;
 
 
+  public Administrator(){}
   public long getAdministratorId() {
     return administratorId;
   }

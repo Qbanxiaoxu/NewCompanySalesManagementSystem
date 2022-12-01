@@ -1,8 +1,5 @@
 //对产品进行操作的函数
 $(function () {
-    $("#productManagement").click("click",function () {
-        $("#productManagementBlock").css("display","block");
-    })
     function getAllProducts(){
         $.post(
             "/Query",

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>管理员界面</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/page.css">
-    <script src="../static/js/jQuery3.6.1.js"></script>
-    <script src="../static/js/administratorInterface.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/page.css" th:href="@{../static/css/page.css}">
+    <script src="../static/js/jQuery3.6.1.js" th:src="@{../static/js/jQuery3.6.1.js}"></script>
+    <script src="../static/js/administratorInterface.js" th:src="@{../static/js/administratorInterface.js/js/administratorInterface.js}"></script>
 </head>
 <body>
 <!--#左侧导航栏-->
@@ -14,7 +14,7 @@
 </div>
 <div class="Menu">
     <ul class="menu">
-        <li id="selfInfo">
+        <li id="selfInformationManagement">
             个人信息
         </li>
         <li id="staffManagement">
@@ -32,6 +32,35 @@
     </ul>
 </div>
 <div class="right" id="content">
+<!--    个人信息管理模块-->
+    <div id="selfInformationManagementBlock" class="hide">
+        <table id="showSelfInformation">
+
+        </table>
+        <button id="showModifyInformationForm">修改个人信息</button>
+        <form id="modifySelfInformationForm" class="hide">
+            <table>
+                <tr>
+                    <td>姓名：</td>
+                    <td><input id="modifySelfName"></td>
+                    <td>密码</td>
+                    <td><input id="modifySelfPsd"></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td><input id="modifySelfGender"></td>
+                    <td>地址:</td>
+                    <td><input id="modifySelfAddress"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input id="modifyEmail"></td>
+                    <td><button id="modifySelfInformationBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+<!--    销售人员管理模块-->
     <div id="staffManagementBlock" class="hide">
         <input type="text"  id="searchStaffBox">
         <button id="getStaffByIdBtn">查询销售人员</button>
@@ -41,10 +70,57 @@
         <input type="text"  id="modifyStaffBox">
         <button id="showModifyStaffBtn">编辑销售人员</button><br><br>
         <button id="showInsertStaffBtn">新增销售人员</button>
+        <form id="insertStaffForm" class="hide">
+            <table>
+                <tr>
+                    <td>销售人员姓名</td>
+                    <td><input type="text" id="insertStaffName"></td>
+                    <td>销售人员性别</td>
+                    <td><input type="text" id="insertStaffGender"></td>
+                </tr>
+                <tr>
+                    <td>销售人员地址</td>
+                    <td><input type="text" id="insertStaffAddress"></td>
+                    <td>销售人员邮箱</td>
+                    <td><input type="text" id="insertStaffEmail"></td>
+                </tr>
+                <tr>
+                    <td>销售人员薪资</td>
+                    <td><input type="text" id="insertStaffSalary"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="insertStaffBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <form id="modifyStaffForm" class="hide">
+            <table>
+                <tr>
+                    <td>销售人员姓名</td>
+                    <td><input type="text" id="modifyStaffName"></td>
+                    <td>销售人员性别</td>
+                    <td><input type="text" id="modifyStaffGender"></td>
+                </tr>
+                <tr>
+                    <td>销售人员地址</td>
+                    <td><input type="text" id="modifyStaffAddress"></td>
+                    <td>销售人员邮箱</td>
+                    <td><input type="text" id="modifyStaffEmail"></td>
+                </tr>
+                <tr>
+                    <td>销售人员薪资</td>
+                    <td><input type="text" id="modifyStaffSalary"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="modifyStaffBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
         <table id="showStaffTable">
 
         </table>
     </div>
+<!--    产品管理模块-->
     <div id="productManagementBlock" class="hide">
         <input type="text"  id="searchProductBox">
         <button id="getProductByIdBtn">查询产品</button>
@@ -54,8 +130,49 @@
         <input type="text"  id="modifyProductBox">
         <button id="showModifyProductBtn">编辑产品</button><br><br>
         <button id="showInsertProductBtn">新增产品</button>
-        <table id="showProductTable"></table>
+        <form id="insertProductForm" class="hide">
+            <table>
+                <tr>
+                    <td>产品名称：</td>
+                    <td><input type="text" id="insertName"></td>
+                    <td>产品描述：</td>
+                    <td><input type="text" id="insertDescription"></td>
+                </tr>
+                <tr>
+                    <td>产品价格：</td>
+                    <td><input type="text" id="insertPrice"></td>
+                    <td>产品库存量：</td>
+                    <td><input type="text" id="insertInventory"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="insertBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <form id="modifyProductForm" class="hide">
+            <table>
+                <tr>
+                    <td>产品名称：</td>
+                    <td><input type="text" id="modifyName"></td>
+                    <td>产品描述：</td>
+                    <td><input type="text" id="modifyDescription"></td>
+                </tr>
+                <tr>
+                    <td>产品价格：</td>
+                    <td><input type="text" id="modifyPrice"></td>
+                    <td>产品库存量：</td>
+                    <td><input type="text" id="modifyInventory"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="modifyBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <table id="showProductTable">
+
+        </table>
     </div>
+<!--    客户管理模块-->
     <div id="clientManagementBlock" class="hide">
         <input type="text"  id="searchClientBox">
         <button id="getClientByIdBtn">查询客户</button>
@@ -65,7 +182,50 @@
         <input type="text"  id="modifyClientBox">
         <button id="showModifyClientBtn">编辑客户</button><br><br>
         <button id="showInsertClientBtn">新增客户</button>
+
+        <form id="insertClientForm" class="hide">
+            <table>
+                <tr>
+                    <td>客户姓名:</td>
+                    <td><input type="text" id="insertClientName"></td>
+                    <td>客户性别:</td>
+                    <td><input type="text" id="insertClientGender"></td>
+                </tr>
+                <tr>
+                    <td>客户地址:</td>
+                    <td><input type="text" id="insertClientAddress"></td>
+                    <td>客户邮箱:</td>
+                    <td><input type="text" id="insertClientEmail"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="insertClientBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <form id="modifyClientForm" class="hide">
+            <table>
+                <tr>
+                    <td>客户姓名:</td>
+                    <td><input type="text" id="modifyClientName"></td>
+                    <td>客户性别:</td>
+                    <td><input type="text" id="modifyClientGender"></td>
+                </tr>
+                <tr>
+                    <td>客户地址:</td>
+                    <td><input type="text" id="modifyClientAddress"></td>
+                    <td>客户邮箱:</td>
+                    <td><input type="text" id="modifyClientEmail"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="modifyClientBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <table if="showClientTable">
+
+        </table>
     </div>
+<!--    公司管理模块-->
     <div id="orderManagementBlock" class="hide">
         <input type="text"  id="orderSearchBox">
         <button id="getOrderByIdBtn">查询订单</button>
@@ -74,130 +234,97 @@
         <button id="delOrderBtn">删除订单</button><br><br>
         <input type="text"  id="modifyOrderBox">
         <button id="showModifyOrderBtn">编辑订单</button><br><br>
-        <button id="showInsertOrderBtn">新增订单</button>
+        <button id="showInsertOrderBtn">新增订单</button><br><br>
+        <button id="showIncome">查看销售额</button>
+        <form id="insertOrderForm" class="hide">
+            <table>
+                <tr>
+                    <td>订单时间：</td>
+                    <td><input type="text" id="insertOrderTime"></td>
+                    <td>下单顾客</td>
+                    <td><input type="text" id="insertOrderClient"></td>
+                </tr>
+                <tr>
+                    <td>负责销售：</td>
+                    <td><input type="text" id="insertOrderStaff"></td>
+                    <td>订单总金额</td>
+                    <td><input type="text" id="insertOrderTotal"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="insertOrderBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <form id="modifyOrderForm" class="hide">
+            <table>
+                <tr>
+                    <td>订单时间：</td>
+                    <td><input type="text" id="modifyOrderTime"></td>
+                    <td>下单顾客</td>
+                    <td><input type="text" id="modifyOrderClient"></td>
+                </tr>
+                <tr>
+                    <td>负责销售：</td>
+                    <td><input type="text" id="modifyOrderStaff"></td>
+                    <td>订单总金额</td>
+                    <td><input type="text" id="modifyOrderTotal"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" id="modifyOrderBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+        <table id="showOrderTable">
+
+        </table>
+        <table id="showIncomeTable">
+
+        </table>
     </div>
-    <form id="insertStaffForm" class="hide">
-        <table>
-            <tr>
-                <td>销售人员姓名</td>
-                <td><input type="text" id="insertStaffName"></td>
-                <td>销售人员性别</td>
-                <td><input type="text" id="insertStaffGender"></td>
-            </tr>
-            <tr>
-                <td>销售人员地址</td>
-                <td><input type="text" id="insertStaffAddress"></td>
-                <td>销售人员邮箱</td>
-                <td><input type="text" id="insertStaffEmail"></td>
-            </tr>
-            <tr>
-                <td>销售人员薪资</td>
-                <td><input type="text" id="insertStaffSalary"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="insertStaffBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
-    <form id="modifyStaffForm" class="hide">
-        <table>
-            <tr>
-                <td>销售人员姓名</td>
-                <td><input type="text" id="modifyStaffName"></td>
-                <td>销售人员性别</td>
-                <td><input type="text" id="modifyStaffGender"></td>
-            </tr>
-            <tr>
-                <td>销售人员地址</td>
-                <td><input type="text" id="modifyStaffAddress"></td>
-                <td>销售人员邮箱</td>
-                <td><input type="text" id="modifyStaffEmail"></td>
-            </tr>
-            <tr>
-                <td>销售人员薪资</td>
-                <td><input type="text" id="modifyStaffSalary"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="modifyStaffBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
-    <form id="insertClientForm" class="hide">
-        <table>
-            <tr>
-                <td>客户姓名:</td>
-                <td><input type="text" id="insertClientName"></td>
-                <td>客户性别:</td>
-                <td><input type="text" id="insertClientGender"></td>
-            </tr>
-            <tr>
-                <td>客户地址:</td>
-                <td><input type="text" id="insertClientAddress"></td>
-                <td>客户邮箱:</td>
-                <td><input type="text" id="insertClientEmail"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="insertClientBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
-    <form id="modifyClientForm" class="hide">
-        <table>
-            <tr>
-                <td>客户销售人员姓名:</td>
-                <td><input type="text" id="modifyClientName"></td>
-                <td>客户性别:</td>
-                <td><input type="text" id="modifyClientGender"></td>
-            </tr>
-            <tr>
-                <td>客户地址:</td>
-                <td><input type="text" id="modifyClientAddress"></td>
-                <td>客户邮箱:</td>
-                <td><input type="text" id="modifyClientEmail"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="modifyClientBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
-    <form id="insertProductForm" class="hide">
-        <table>
-            <tr>
-                <td>产品名称：</td>
-                <td><input type="text" id="insertName"></td>
-                <td>产品描述：</td>
-                <td><input type="text" id="insertDescription"></td>
-            </tr>
-            <tr>
-                <td>产品价格：</td>
-                <td><input type="text" id="insertPrice"></td>
-                <td>产品库存量：</td>
-                <td><input type="text" id="insertInventory"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="insertBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
-    <form id="modifyProductForm" class="hide">
-        <table>
-            <tr>
-                <td>产品名称：</td>
-                <td><input type="text" id="modifyName"></td>
-                <td>产品描述：</td>
-                <td><input type="text" id="modifyDescription"></td>
-            </tr>
-            <tr>
-                <td>产品价格：</td>
-                <td><input type="text" id="modifyPrice"></td>
-                <td>产品库存量：</td>
-                <td><input type="text" id="modifyInventory"></td>
-            </tr>
-            <tr>
-                <td><button type="submit" id="modifyBtn">确定</button></td>
-            </tr>
-        </table>
-    </form>
 </div>
+<script>
+    $(function () {
+        $("#selfInformationManagement").click("click",function () {
+            $("#selfInformationManagementBlock").css("display","block");
+            $("#staffManagementBlock").css("display","none");
+            $("#productManagementBlock").css("display","none");
+            $("#clientManagementBlock").css("display","none");
+            $("#orderManagementBlock").css("display","none");
+        })
+        $("#staffManagement").click("click",function () {
+            $("#staffManagementBlock").css("display","block");
+            $("#productManagementBlock").css("display","none");
+            $("#clientManagementBlock").css("display","none");
+            $("#orderManagementBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+        });
+
+        $("#productManagement").click("click",function () {
+            $("#productManagementBlock").css("display","block");
+            $("#staffManagementBlock").css("display","none");
+            $("#clientManagementBlock").css("display","none");
+            $("#orderManagementBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+
+        });
+
+        $("#clientManagement").click("click",function () {
+            $("#clientManagementBlock").css("display","block");
+            $("#productManagementBlock").css("display","none");
+            $("#staffManagementBlock").css("display","none");
+            $("#orderManagementBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+
+        });
+        $("#companyManagement").click("click",function(){
+            $("#orderManagementBlock").css("display","block");
+            $("#productManagementBlock").css("display","none");
+            $("#staffManagementBlock").css("display","none");
+            $("#clientManagementBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+
+        });
+    })
+</script>
 </body>
 </html>

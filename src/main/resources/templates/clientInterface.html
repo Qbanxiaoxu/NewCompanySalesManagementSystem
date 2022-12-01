@@ -1,34 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>客户界面</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/page.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/page.css" th:href="@{../static/css/page.css}">
     <script src="../static/js/jQuery3.6.1.js"></script>
+
 </head>
 <body>
 <h1>公司销售管理系统</h1>
 <div class="Menu">
     <ul class="menu">
-        <li class="current" data-id="selfInfo">
+        <li id="selfInformationManagement">
             个人信息
         </li>
-        <li id="productInfor">
+        <li id="productInformation">
             产品信息
         </li>
-        <li data-id="orderManagement">
+        <li id="orderManagement">
             订单管理
         </li>
     </ul>
 </div>
 <!--右侧内容区-->
 <div class="right" id="content">
-    
+    <div id="selfInformationManagementBlock" class="hide">
+        <table id="showSelfInformation">
 
+        </table>
+        <button id="showModifyInformationForm">修改个人信息</button>
+        <form id="modifySelfInformationForm" class="hide">
+            <table>
+                <tr>
+                    <td>姓名：</td>
+                    <td><input id="modifySelfName"></td>
+                    <td>密码</td>
+                    <td><input id="modifySelfPsd"></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td><input id="modifySelfGender"></td>
+                    <td>地址:</td>
+                    <td><input id="modifySelfAddress"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input id="modifyEmail"></td>
+                    <td><button id="modifySelfInformationBtn">确定</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="productInformationBlock" class="hide">
+        产品名称：
+        <input id="searchProductBox">
+        <button id="searchProductBtn">查找</button>
+        <table id="showProductTable"></table>
+    </div>
+    <div id="orderManagementBlock" class="hide">
+        <button id="searchFormerOrders">
+            查询历史订单
+        </button>
+        <button id="createNewOrders">
+            新建订单
+        </button>
+        <table id="showFormerOrders">
+
+        </table>
+    </div>
 </div>
 <div>
 </div>
 <script>
+    $(function () {
+        $("#selfInformationManagement").click("click",function () {
+            $("#selfInformationManagementBlock").css("display","block");
+            $("#productInformationBlock").css("display","none");
+            $("#orderManagementBlock").css("display","none");
+        })
+        $("#productInformation").click("click",function () {
+
+            $("#productInformationBlock").css("display","block");
+            $("#orderManagementBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+
+        });
+        $("#orderManagement").click("click",function () {
+            $("#orderManagementBlock").css("display","block");
+            $("#productInformationBlock").css("display","none");
+            $("#selfInformationManagementBlock").css("display","none");
+
+        })
+    })
 </script>
 
 </body>

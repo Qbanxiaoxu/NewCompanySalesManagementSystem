@@ -1,18 +1,12 @@
 $(function (){
     //点击显示员工管理
-    $("#staffManagement").click("click",function () {
-        $("#staffManagementBlock").css("display","block");
-    });
     $("#showInsertStaffBtn").click("click",function () {
         $("#insertStaffForm").css("display","block");
     });
     $("#showModifyStaffBtn").click("click",function () {
         $("#modifyStaffForm").css("display","block");
     })
-    //点击显示用户管理
-    $("#clientManagement").click("click",function () {
-        $("#clientManagementBlock").css("display","block");
-    });
+    //点击显示客户管理
     $("#showInsertClientBtn").click("click",function(){
        $("#insertClientForm").css("display","block");
     });
@@ -20,9 +14,6 @@ $(function (){
         $("#modifyClientForm").css("display","block");
     });
     //点击显示产品管理
-    $("#companyManagement").click("click",function(){
-        $("#orderManagementBlock").css("display","block");
-    });
     $("#showInsertProductBtn").click("click",function () {
         $("#insertProductForm").css("display","block");
     });

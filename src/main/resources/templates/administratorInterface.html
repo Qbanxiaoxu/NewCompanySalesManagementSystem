@@ -1,97 +1,202 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<!--    <base th:href="@{/}">-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员界面</title>
-    <script th:src="@{/js/jQuery3.6.1.js}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/page.css}">
-    <script type="text/javascript" th:src="@{/js/administratorInterface.js}"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/page.css">
+    <script src="../static/js/jQuery3.6.1.js"></script>
+    <script src="../static/js/administratorInterface.js"></script>
 </head>
 <body>
-<input type="hidden" id="username" name="username" value="<%=username%>">
-<input type="hidden" id="password" name="password" value="<%=password%>">
-<input type="hidden" id="identity" name="identity" value="<%=identity%>">
-<input type="hidden" id="id" name="id" value="<%=ID%>">
-<input type="hidden" id="gender" name="gender" value="<%=gender%>">
-<input type="hidden" id="email" name="email" value="<%=email%>">
-<input type="hidden" id="address" name="address" value="<%=address%>">
-
-
-<h1>公司管理平台</h1>
-<div class = "content">
-    <!--左侧导航栏-->
-    <div class = "content-left">
-        <ul class="menu">
-            <li class="menu-title1">
-                <p>个人信息</p>
-                <ul>
-                    <li class="menu-title2" id="displayPersonalInfo">查看</li>
-                    <li class="menu-title2" id="modifyPersonalInfo">修改信息</li>
-                </ul>
-            </li>
-            <!--            小标题-->
-
-            <li class="menu-title1">
-                <p>销售人员</p>
-                <ul>
-                    <li class="menu-title2" id="displaySalesStaffsInfo">人员信息</li>
-                    <li class="menu-title2" id="findSalesStaffInfo">查找人员</li>
-                    <li class="menu-title2" id="deleteSalesStaffInfo">删除人员</li>
-                    <li class="menu-title2" id="modifySalesStaffInfo">修改人员</li>
-                    <li class="menu-title2" id="addSalesStaffInfo">添加人员</li>
-                </ul>
-            </li>
-
-            <li class="menu-title1">
-                <p>产品管理</p>
-                <ul>
-                    <li class="menu-title2" id="displayProductsInfo">产品信息</li>
-                    <li class="menu-title2" id="findProductInfo">查找产品</li>
-                    <li class="menu-title2" id="deleteProductInfo">删除产品</li>
-                    <li class="menu-title2" id="modifyProductInfo">修改产品</li>
-                    <li class="menu-title2" id="addProductInfo">添加产品</li>
-                </ul>
-            </li>
-
-            <li class="menu-title1">
-                <p>客户管理</p>
-                <ul>
-                    <li class="menu-title2" id="displayClientsInfo">客户信息</li>
-                    <li class="menu-title2" id="findClientInfo">查找客户</li>
-                    <li class="menu-title2" id="deleteClientInfo">删除客户</li>
-                    <li class="menu-title2" id="modifyClientInfo">修改客户</li>
-                    <li class="menu-title2" id="addClientInfo">添加客户</li>
-                </ul>
-            </li>
-
-            <li class="menu-title1">
-                <p>公司管理</p>
-                <ul>
-                    <li class="menu-title2" id="displayOrdersInfo">订单信息</li>
-                    <li class="menu-title2" id="queryTurnover ">营业额</li>
-                    <li class="menu-title2" id="productSalesStatus">销售情况</li>
-                </ul>
-            </li>
-
-        </ul>
-    </div>
-    <!--右侧内容区-->
-    <div class = "content-right" id="right" style="width: 100%;height:100%">
-        <div style="display: inline-block" id="display">
-        </div>
-    </div>
+<!--#左侧导航栏-->
+<div id="header">
+    <h1>公司销售管理系统</h1>
 </div>
-<script>
-    $(function(){
-        // 隐藏二级标题
-        $(".menu ul").hide();
-        $(".menu>li>p").click(function(){
-            $(".menu>li>ul").slideUp();
-            $(this).next().slideToggle();
-        });
-    });
-</script>
+<div class="Menu">
+    <ul class="menu">
+        <li id="selfInfo">
+            个人信息
+        </li>
+        <li id="staffManagement">
+            销售人员管理
+        </li>
+        <li id="productManagement">
+            产品管理
+        </li>
+        <li id="clientManagement">
+            客户管理
+        </li>
+        <li id="companyManagement">
+            公司管理
+        </li>
+    </ul>
+</div>
+<div class="right" id="content">
+    <div id="staffManagementBlock" class="hide">
+        <input type="text"  id="searchStaffBox">
+        <button id="getStaffByIdBtn">查询销售人员</button>
+        <button id="getAllStaffBtn">查询全部销售人员</button><br><br>
+        <input type="text"  id="delStaffBox">
+        <button id="delStaffBtn">删除销售人员</button><br><br>
+        <input type="text"  id="modifyStaffBox">
+        <button id="showModifyStaffBtn">编辑销售人员</button><br><br>
+        <button id="showInsertStaffBtn">新增销售人员</button>
+        <table id="showStaffTable">
+
+        </table>
+    </div>
+    <div id="productManagementBlock" class="hide">
+        <input type="text"  id="searchProductBox">
+        <button id="getProductByIdBtn">查询产品</button>
+        <button id="getAllProductBtn">查询全部产品</button><br><br>
+        <input type="text"  id="delProductBox">
+        <button id="delProductBtn">删除产品</button><br><br>
+        <input type="text"  id="modifyProductBox">
+        <button id="showModifyProductBtn">编辑产品</button><br><br>
+        <button id="showInsertProductBtn">新增产品</button>
+    </div>
+    <div id="clientManagementBlock" class="hide">
+        <input type="text"  id="searchClientBox">
+        <button id="getClientByIdBtn">查询客户</button>
+        <button id="getAllClientBtn">查询全部客户</button><br><br>
+        <input type="text"  id="delClientBox">
+        <button id="delClientBtn">删除客户</button><br><br>
+        <input type="text"  id="modifyClientBox">
+        <button id="showModifyClientBtn">编辑客户</button><br><br>
+        <button id="showInsertClientBtn">新增客户</button>
+    </div>
+    <div id="orderManagementBlock" class="hide">
+        <input type="text"  id="orderSearchBox">
+        <button id="getOrderByIdBtn">查询订单</button>
+        <button id="getAllOrdersBtn">查询全部订单</button><br><br>
+        <input type="text"  id="delOrderBox">
+        <button id="delOrderBtn">删除订单</button><br><br>
+        <input type="text"  id="modifyOrderBox">
+        <button id="showModifyOrderBtn">编辑订单</button><br><br>
+        <button id="showInsertOrderBtn">新增订单</button>
+    </div>
+    <form id="insertStaffForm" class="hide">
+        <table>
+            <tr>
+                <td>销售人员姓名</td>
+                <td><input type="text" id="insertStaffName"></td>
+                <td>销售人员性别</td>
+                <td><input type="text" id="insertStaffGender"></td>
+            </tr>
+            <tr>
+                <td>销售人员地址</td>
+                <td><input type="text" id="insertStaffAddress"></td>
+                <td>销售人员邮箱</td>
+                <td><input type="text" id="insertStaffEmail"></td>
+            </tr>
+            <tr>
+                <td>销售人员薪资</td>
+                <td><input type="text" id="insertStaffSalary"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="insertStaffBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+    <form id="modifyStaffForm" class="hide">
+        <table>
+            <tr>
+                <td>销售人员姓名</td>
+                <td><input type="text" id="modifyStaffName"></td>
+                <td>销售人员性别</td>
+                <td><input type="text" id="modifyStaffGender"></td>
+            </tr>
+            <tr>
+                <td>销售人员地址</td>
+                <td><input type="text" id="modifyStaffAddress"></td>
+                <td>销售人员邮箱</td>
+                <td><input type="text" id="modifyStaffEmail"></td>
+            </tr>
+            <tr>
+                <td>销售人员薪资</td>
+                <td><input type="text" id="modifyStaffSalary"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="modifyStaffBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+    <form id="insertClientForm" class="hide">
+        <table>
+            <tr>
+                <td>客户姓名:</td>
+                <td><input type="text" id="insertClientName"></td>
+                <td>客户性别:</td>
+                <td><input type="text" id="insertClientGender"></td>
+            </tr>
+            <tr>
+                <td>客户地址:</td>
+                <td><input type="text" id="insertClientAddress"></td>
+                <td>客户邮箱:</td>
+                <td><input type="text" id="insertClientEmail"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="insertClientBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+    <form id="modifyClientForm" class="hide">
+        <table>
+            <tr>
+                <td>客户销售人员姓名:</td>
+                <td><input type="text" id="modifyClientName"></td>
+                <td>客户性别:</td>
+                <td><input type="text" id="modifyClientGender"></td>
+            </tr>
+            <tr>
+                <td>客户地址:</td>
+                <td><input type="text" id="modifyClientAddress"></td>
+                <td>客户邮箱:</td>
+                <td><input type="text" id="modifyClientEmail"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="modifyClientBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+    <form id="insertProductForm">
+        <table>
+            <tr>
+                <td>产品名称：</td>
+                <td><input type="text" id="insertName"></td>
+                <td>产品描述：</td>
+                <td><input type="text" id="insertDescription"></td>
+            </tr>
+            <tr>
+                <td>产品价格：</td>
+                <td><input type="text" id="insertPrice"></td>
+                <td>产品库存量：</td>
+                <td><input type="text" id="insertInventory"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="insertBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+    <form id="modifyProductForm">
+        <table>
+            <tr>
+                <td>产品名称：</td>
+                <td><input type="text" id="modifyName"></td>
+                <td>产品描述：</td>
+                <td><input type="text" id="modifyDescription"></td>
+            </tr>
+            <tr>
+                <td>产品价格：</td>
+                <td><input type="text" id="modifyPrice"></td>
+                <td>产品库存量：</td>
+                <td><input type="text" id="modifyInventory"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="modifyBtn">确定</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

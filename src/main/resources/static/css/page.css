@@ -47,3 +47,15 @@ li :hover{
     /*border-style: dashed;*/
     width:70%
 }
+button{
+    width:160px;
+    height:40px;
+}
+input{
+    width:160px;
+    height:30px;
+}
+
+.hide{
+    display:none;
+}

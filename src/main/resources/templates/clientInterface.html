@@ -2,121 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>client</title>
-</head>
     <title>客户界面</title>
-    <style>
-        .border{
-            border-bottom: black solid 1px;
-            border-left: black solid 1px;
-            border-right:black solid 1px;
-            border-top: black solid 1px;
-        }
-        #personalInfoTable{
-            width: 400px;
-            height: 250px;
-        }
-        #show{
-            border: black 1px solid;
-            width: auto;
-            height: 500px;
-        }
-        #content{
-            width: auto;height: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/page.css">
     <script src="../static/js/jQuery3.6.1.js"></script>
 </head>
 <body>
-<input type="hidden" id="username" name="username" value="<%=username%>">
-<input type="hidden" id="password" name="password" value="<%=password%>">
-<input type="hidden" id="identity" name="identity" value="<%=identity%>">
-<input type="hidden" id="id" name="id" value="<%=ID%>">
-<input type="hidden" id="gender" name="gender" value="<%=gender%>">
-<input type="hidden" id="email" name="email" value="<%=email%>">
-<input type="hidden" id="address" name="address" value="<%=address%>">
-<table id="personalInfoTable" class="border">
-    <tr><th>个人信息</th></tr>
-    <tr><td>工号</td><td><%out.println(ID);%></td></tr>
-    <tr><td>名字</td><td><%out.println(username);%></td></tr>
-    <tr><td>性别</td><td><%out.println(gender);%></td></tr>
-    <tr><td>邮箱</td><td><%out.println(email);%></td></tr>
-    <tr><td>地址</td><td><%out.println(address);%></td></tr>
-</table>
+<h1>公司销售管理系统</h1>
+<div class="Menu">
+    <ul class="menu">
+        <li class="current" data-id="selfInfo">
+            个人信息
+        </li>
+        <li id="productInfor">
+            产品信息
+        </li>
+        <li data-id="orderManagement">
+            订单管理
+        </li>
+    </ul>
+</div>
+<!--右侧内容区-->
+<div class="right" id="content">
 
-<div id="show">
-    <div id="optionBox">
-        <input type="button" id="queryProductInformation" value="查询产品信息">
-        <input type="button" id="modifyInformation" value="修改信息">
-        <input type="button" id="queryOrderInformation" value="查看订单">
-        <input type="button" id="addOrder" value="下单">
-    </div>
-    <div id="content">
-        <div id="showDetails"></div>
-    </div>
 </div>
 
 <script>
-    $(document).ready(function(){
-        $("#queryProductInformation").click(function(){
-            $.post("ProductInformationManagement",
-                {
-                    operation:"queryProductInformation",
-                    identity:"client"
-                },
-                function(data,status){
-                    if(status==="success") {
-                        $("#showDetails").html("");
-                        let productsList = JSON.parse(data);
-                        let html="<table width=\"50%\" border=\"1px\"> <tr><th>产品信息</th></tr><tr><td>编号</td><td>名称</td><td>描述</td><td>价格</td><td>库存量</td></tr>"
-                        for (let i = 0; i < productsList.length; i++) {
-                            let products = productsList[i];
-                            html += "<tr>";
-                            html += "<td>" + products.pid + "</td>";
-                            html += "<td>" + products.pname + "</td>";
-                            html += "<td>" + products.pdescription + "</td>";
-                            html += "<td>" + products.pprice + "</td>";
-                            html += "<td>" + products.pinventory + "</td>";
-                            html += "</tr>";
-                        }
-                        html+="</table>"
-                        document.getElementById("showDetails").innerHTML = html;
-                    }
-                    else {alert( data + "\n" + status)}
-                });
-        });
-        $("#queryOrderInformation").click(function(){
-            $.post("OrderManagement",
-                {
-                    operation:"queryOrderInformation",
-                    identity:"client",
-                    username:document.getElementById("username").value(),
-                    password:document.getElementById("password").value(),
-                    id:document.getElementById("id").value()
-                },
-                function(data,status){
-                    if(status==="success") {
-                        $("#showDetails").html("");
-                        let productsList = JSON.parse(data);
-                        let html="<table width=\"50%\" border=\"1px\"> <tr><th>产品信息</th></tr><tr><td>编号</td><td>名称</td><td>描述</td><td>价格</td><td>库存量</td></tr>"
-                        for (let i = 0; i < productsList.length; i++) {
-                            let products = productsList[i];
-                            html += "<tr>";
-                            html += "<td>" + products.pid + "</td>";
-                            html += "<td>" + products.pname + "</td>";
-                            html += "<td>" + products.pdescription + "</td>";
-                            html += "<td>" + products.pprice + "</td>";
-                            html += "<td>" + products.pinventory + "</td>";
-                            html += "</tr>";
-                        }
-                        html+="</table>"
-                        document.getElementById("showDetails").innerHTML = html;
-                    }
-                    else {alert( data + "\n" + status)}
-                });
-        });
-    });
 </script>
 
 </body>

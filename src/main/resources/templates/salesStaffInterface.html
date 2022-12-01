@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>销售人员界面</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/page.css" th:href="@{../static/css/page.css}">
-    <script src="../static/js/jQuery3.6.1.js" th:src="@{../static/js/jQuery3.6.1.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <script src="/js/jQuery3.6.1.js"></script>
+    <script src="/js/salesStaffInterface.js"></script>
 </head>
 <body>
 <h1>公司销售管理系统</h1>
@@ -205,7 +206,7 @@
                 </tr>
             </table>
         </form>
-        <table if="showClientTable">
+        <table id="showClientTable">
 
         </table>
     </div>

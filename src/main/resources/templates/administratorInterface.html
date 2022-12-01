@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>管理员界面</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/page.css" th:href="@{../static/css/page.css}">
-    <script src="../static/js/jQuery3.6.1.js" th:src="@{../static/js/jQuery3.6.1.js}"></script>
-    <script src="../static/js/administratorInterface.js" th:src="@{../static/js/administratorInterface.js/js/administratorInterface.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <script src="/js/jQuery3.6.1.js"></script>
+    <script src="/js/administratorInterface.js"></script>
 </head>
 <body>
 <!--#左侧导航栏-->
@@ -145,7 +145,7 @@
                     <td><input type="text" id="insertInventory"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="insertBtn">确定</button></td>
+                    <td><button  id="insertProductBtn">确定</button></td>
                 </tr>
             </table>
         </form>
@@ -164,7 +164,7 @@
                     <td><input type="text" id="modifyInventory"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="modifyBtn">确定</button></td>
+                    <td><button  id="modifyProductBtn">确定</button></td>
                 </tr>
             </table>
         </form>
@@ -198,7 +198,7 @@
                     <td><input type="text" id="insertClientEmail"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="insertClientBtn">确定</button></td>
+                    <td><button  id="insertClientBtn">确定</button></td>
                 </tr>
             </table>
         </form>
@@ -217,7 +217,7 @@
                     <td><input type="text" id="modifyClientEmail"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="modifyClientBtn">确定</button></td>
+                    <td><button  id="modifyClientBtn">确定</button></td>
                 </tr>
             </table>
         </form>
@@ -229,7 +229,7 @@
     <div id="orderManagementBlock" class="hide">
         <input type="text"  id="orderSearchBox">
         <button id="getOrderByIdBtn">查询订单</button>
-        <button id="getAllOrdersBtn">查询全部订单</button><br><br>
+        <button id="getAllOrderBtn">查询全部订单</button><br><br>
         <input type="text"  id="delOrderBox">
         <button id="delOrderBtn">删除订单</button><br><br>
         <input type="text"  id="modifyOrderBox">
@@ -251,7 +251,7 @@
                     <td><input type="text" id="insertOrderTotal"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="insertOrderBtn">确定</button></td>
+                    <td><button  id="insertOrderBtn">确定</button></td>
                 </tr>
             </table>
         </form>
@@ -270,7 +270,7 @@
                     <td><input type="text" id="modifyOrderTotal"></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" id="modifyOrderBtn">确定</button></td>
+                    <td><button  id="modifyOrderBtn">确定</button></td>
                 </tr>
             </table>
         </form>

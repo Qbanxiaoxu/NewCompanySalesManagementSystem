@@ -66,6 +66,30 @@ $(function (){
             }
         )
     }
+    function getStaffById(){
+        let sId=$("#searchClientBox").val();
+        $.post(
+            "/Find",
+            {object:"salesStaff"},
+            function (data) {
+                var tds;
+                tds='<td>'+data.clientId+'</td>'+
+                    '<td>'+data.clientPassword+'</td>'+
+                    '<td>'+data.clientName+'</td>'+
+                    '<td>'+data.clientGender+'</td>'+
+                    '<td>'+data.clientAddress+'</td>'+
+                    '<td>'+data.clientEmail+'</td>';
+                $("#showStaffTable").append('<tr>'+tds+'</tr>');
+            }
+        )
+    }
+    function deleteStaffById() {
+        let sId=$("#delStaffBox").val();
+        $.post(
+            "/Delete",
+            {object:salesStaff,ID:sId}
+        )
+    }
     //对产品进行操作的函数
     function getAllProducts(){
         $.post(
@@ -85,12 +109,7 @@ $(function (){
             }
         );
     }
-    function getStaffById(){
-        $.post(
-            "/Find",
-            {object}
-        )
-    }
+
     function getProductById(pId) {
         pId=$("#searchProductBox").val();
         $.post(

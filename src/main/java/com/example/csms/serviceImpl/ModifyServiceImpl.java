@@ -3,6 +3,7 @@ package com.example.csms.serviceImpl;
 import com.example.csms.bean.*;
 import com.example.csms.mapper.ModifyMapper;
 import com.example.csms.service.ModifyService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
  * @author Q版小徐
  * @date 2022/11/22
  */
+@Service
 public class ModifyServiceImpl implements ModifyService {
     @Resource
     private ModifyMapper modifyMapper;

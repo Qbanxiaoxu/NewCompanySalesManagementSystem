@@ -2,6 +2,7 @@ package com.example.csms.serviceImpl;
 
 import com.example.csms.mapper.DeleteMapper;
 import com.example.csms.service.DeleteService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
  * @author Q版小徐
  * @date 2022/11/22
  */
+@Service
 public class DeleteServiceImpl implements DeleteService {
     @Resource
     private DeleteMapper deleteMapper;

@@ -153,7 +153,7 @@ public class CommonController {
      *
      * @return {@link String}
      */
-    @RequestMapping(value = "/Find", name = "find",method = RequestMethod.POST)
+    @RequestMapping(value = "/Find", name = "find")
     public String find(HttpServletRequest request) {
         String object = request.getParameter("object");
         int id = Integer.parseInt(request.getParameter("ID"));

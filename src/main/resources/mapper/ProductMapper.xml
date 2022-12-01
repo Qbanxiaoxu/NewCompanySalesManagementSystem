@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper xmlns="http://mybatis.org/schema/mybatis-mapper">
-    <select id="getAll" resultType="com.example.csms.bean.Product">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.csms.mapper.ProductMapper">
+    <select id="getAllProducts" resultType="com.example.csms.bean.Product">
         SELECT * FROM products
     </select>
-    <select id="searchById" parameterType="long" resultType="com.example.csms.bean.Product">
-        SELECT * FROM products where pID=#{pId}
-    </select>
+
 </mapper>

@@ -1,5 +1,5 @@
 #header{
-    height:10%;
+    height:50px;
 }
 #body{
     height:90%;
@@ -8,7 +8,9 @@ h1
 {
     text-align:center;
 }
-
+.Menu{
+    width:30%;
+}
 body
 {
     margin:0;
@@ -39,9 +41,8 @@ li :hover{
     color:white;
 }
 .right{
-    margin-left: 400px;
     float:left;
-    margin-top: 0;
+    margin-top: 50px;
     padding-top: 0;
     /*border-style: dashed;*/
     width:70%

@@ -2,9 +2,9 @@ package com.example.csms.service;
 
 import com.example.csms.bean.Product;
 
+import java.util.List;
+
 public interface ProductService {
-    Product getAllInfo();
-
-    Product searchById(long pId);
-
+    Product getProductById(long id);
+    List<Product> getAllProducts();
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>销售人员界面</title>
+    <link rel="stylesheet" type="text/css" href="css/page.css">
+    <script src="js/jQuery3.6.1.js"></script>
+</head>
+<body>
+<h1>公司销售管理系统</h1>
+<div class="Menu">
+    <ul class="menu">
+        <li class="current" data-id="selfInfo">
+            个人信息
+        </li>
+        <li data-id="productManagement">
+            产品管理
+        </li>
+        <li data-id="orderManagement">
+            订单管理
+        </li>
+        <li data-id="clientManagement">
+            客户管理
+        </li>
+    </ul>
+</div>
+<div class="right" id="content">
+
+</div>
+<script>
+    $(function (){
+        $(".menu").on("click","li",function () {
+            var sId=$(this).data("id");
+            window.location.hash=sId;
+            loadInner(sId);
+        });
+        function loadInner(sId){
+            var sId=window.location.hash;
+            var pathn,i;
+            switch(sId){
+                case "#selfInfo":
+                    pathn="selfInfo.html"
+                    i=1;
+                    break;
+                case "#productManagement":
+                    pathn="product.html";
+                    i=2;
+                    break;
+                case "#clientManagement":
+                    pathn="client.html";
+                    i=3;
+                    break;
+                default:
+                    break;
+            }
+            $("#content").load(pathn);
+            //$(".menu li").eq(i).addClass("current").siblings().removeClass("current");
+        }
+        var sId=window.location.hash;
+        loadInner(sId);
+    });
+</script>
+</body>
+</html>

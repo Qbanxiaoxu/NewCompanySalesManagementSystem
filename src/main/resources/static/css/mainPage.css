@@ -1,0 +1,72 @@
+.centerTable{
+    margin-left: 350px;
+}
+.floatLeft{
+    float: left;
+}
+ul{
+    list-style-type: none;
+}
+.functionTable{
+    display: inline-block;
+    width: 100%;
+}
+.menu-t1{
+    font-size:25px;
+}
+.menu-t2{
+    font-size: 20px;
+}
+.menu-t1:active{
+    background-color: #e9e9e9;
+}
+.menu-t2:hover{
+    background-color:gainsboro;
+}
+.label{
+    background-color: #E0F7FA;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+}
+button{
+    width:160px;
+    height:40px;
+}
+button:hover{
+    color:cadetblue;
+}
+input{
+    margin-left: 3px;
+    width:160px;
+    height:30px;
+}
+.functionTable{
+    display: none;
+}
+.functionTableHeader{
+    background: #e9e9e9;
+    float: left;
+    width: 100%;
+}
+.functionTableClose {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.functionTableClose:hover,
+.functionTableClose:focus {
+    color: silver;
+    text-decoration: none;
+    cursor: pointer;
+}
+#resultBlock{
+    display: none;
+}
+#resultHeader{
+    float: left;
+    width:100%;
+    background: #4DD0E1;
+}

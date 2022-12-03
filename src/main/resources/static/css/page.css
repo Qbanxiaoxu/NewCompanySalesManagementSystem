@@ -1,61 +1,47 @@
-#header{
-    height:50px;
-}
 #body{
+    display: flex;
+    flex-direction: column;
+}
+#header{
+    height: 10%;
+    width: 100%;
+}
+#content{
+    display: flex;
+    flex-direction: row;
     height:90%;
 }
-h1
-{
-    text-align:center;
-}
-.Menu{
-    width:30%;
-}
-body
-{
-    margin:0;
-    background-image:url('images/background.png');
-    background-repeat:repeat-x;
-}
-
-.menu
-{
-    /*width:30%;*/
-    float:left;
-    width:300px;
-    font-size:25px;
-    list-style-type:none;
-    /*margin:0;*/
-    /*padding:0;*/
-    text-align:left;
-}
-li{
-    text-align:center;
-    display:block;
-    color:grey;
-    padding:8px 16px;
-    text-decoration:none;
-}
-li :hover{
-    background-color:#555;
+#title{
+    width:90%;
+    height:80px;
     color:white;
+    text-align: left;
+    /*padding-left: 50px;*/
+    background-color:#4DD0E1 ;
 }
-.right{
-    float:left;
-    margin-top: 50px;
-    padding-top: 0;
-    /*border-style: dashed;*/
-    width:70%
+#welcomeMsg{
+    width:10%;
+    height:80px;
+    text-align: center;
+    background-color: #80DEEA;
 }
-button{
-    width:160px;
-    height:40px;
+#menuBlock{
+    background-color: #E0F7FA;
+    width:25%;
+    height: 1000px;
 }
-input{
-    width:160px;
-    height:30px;
+#rightContent{
+    width:75%;
+    display: flex;
+    flex-direction: column;
 }
-
-.hide{
-    display:none;
+#resultBlock{
+    z-index: -2;
+    /*margin-top: 100px;*/
+    /*border-top: 1px solid gainsboro;*/
+}
+#functionBlock{
+    width: 100%;
+    height: 200px;
+    display: inline-block;
 }

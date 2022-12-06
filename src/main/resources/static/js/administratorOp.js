@@ -7,7 +7,7 @@ $(function () {
         getSalesStaffById(sId);
     });
     function getSalesStaffById(sid) {
-        $("#resultTable").find('tr').remove();
+        $("#salesStaffTable").find('tr').remove();
         let th='<tr>' +
             '<th>销售人员工号</th>' +
             '<th>销售人员密码</th>' +
@@ -17,7 +17,7 @@ $(function () {
             '<th>销售人员邮箱</th>' +
             '<th>销售人员薪资</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#salesStaffTable").append(th);
 
         $.ajax({
             type:'POST',
@@ -33,8 +33,8 @@ $(function () {
                     '<td>'+data.salesStaffEmail+'</td>'+
                     '<td>'+data.salesStaffSaraly+'</td>';
 
-                $("#resultTable").append('<tr>'+tds+'</tr>');
-                $("#resultTable").css("display","block");
+                $("#salesStaffTable").append('<tr>'+tds+'</tr>');
+                $("#salesStaffTable").css("display","block");
             }
         })
     }
@@ -43,7 +43,7 @@ $(function () {
     });
     function getAllSalesStaffs() {
 
-        $("#resultTable").find('tr').remove();
+        $("#salesStaffTable").find('tr').remove();
         let th='<tr>' +
             '<th>销售人员工号</th>' +
             '<th>销售人员密码</th>' +
@@ -53,7 +53,7 @@ $(function () {
             '<th>销售人员邮箱</th>' +
             '<th>销售人员薪资</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#salesStaffTable").append(th);
 
         $.ajax({
             type:'POST',
@@ -71,9 +71,9 @@ $(function () {
                         '<td>'+data[i].salesStaffEmail+'</td>'+
                         '<td>'+data[i].salesStaffSaraly+'</td>';
 
-                    $("#resultTable").append('<tr>'+tds+'</tr>');
+                    $("#salesStaffTable").append('<tr>'+tds+'</tr>');
                 }
-                $("#resultTable").css("display","block");
+                $("#salesStaffTable").css("display","block");
             }
         });
     }
@@ -88,8 +88,8 @@ $(function () {
             url:'/Delete',
             data:{'object':'SalesStaff','ID':pid},
             success:function () {
-                $("#resultTable").find('tr').remove();
-                $("#resultTable").append('删除销售人员信息成功!');
+                $("#salesStaffTable").find('tr').remove();
+                $("#salesStaffTable").append('删除销售人员信息成功!');
             }
         });
     }
@@ -140,8 +140,8 @@ $(function () {
            url:'/Delete',
            data:{'object':'Product','ID':pid},
            success:function () {
-               $("#resultTable").find('tr').remove();
-               $("#resultTable").append('删除产品信息成功!');
+               $("#productTable").find('tr').remove();
+               $("#productTable").append('删除产品信息成功!');
            }
 
         });
@@ -183,7 +183,7 @@ $(function () {
         getClientById(cId);
     });
     function getClientById(cid) {
-        $("#resultTable").find('tr').remove();
+        $("#clientTable").find('tr').remove();
         let th='<tr>' +
             '<th>客户编号</th>' +
             '<th>客户密码</th>' +
@@ -192,7 +192,7 @@ $(function () {
             '<th>客户地址</th>' +
             '<th>客户邮箱</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#clientTable").append(th);
 
         $.ajax({
             type:'POST',
@@ -207,8 +207,8 @@ $(function () {
                     '<td>'+data.clientGender+'</td>'+
                     '<td>'+data.clientAddress+'</td>'+
                     '<td>'+data.clientEmail+'</td>';
-                $("#resultTable").append('<tr>'+tds+'</tr>');
-                $("#resultTable").css("display","block");
+                $("#clientTable").append('<tr>'+tds+'</tr>');
+                $("#clientTable").css("display","block");
             }
         })
     }
@@ -216,7 +216,7 @@ $(function () {
         getAllClients();
     });
     function getAllClients() {
-        $("#resultTable").find('tr').remove();
+        $("#clientTable").find('tr').remove();
         let th='<tr>' +
             '<th>客户编号</th>' +
             '<th>客户密码</th>' +
@@ -225,7 +225,7 @@ $(function () {
             '<th>客户地址</th>' +
             '<th>客户邮箱</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#clientTable").append(th);
         $.ajax({
             type:'POST',
             url:'/Query',
@@ -240,9 +240,9 @@ $(function () {
                         '<td>'+data[i].clientGender+'</td>'+
                         '<td>'+data[i].clientAddress+'</td>'+
                         '<td>'+data[i].clientEmail+'</td>';
-                    $("#resultTable").append('<tr>'+tds+'</tr>');
+                    $("#clientTable").append('<tr>'+tds+'</tr>');
                 }
-                $("#resultTable").css("display","block");
+                $("#clientTable").css("display","block");
             }
         })
     }
@@ -257,8 +257,8 @@ $(function () {
             url:'/Delete',
             data:{'object':'Client','ID':cid},
             success:function () {
-                $("#resultTable").find('tr').remove();
-                $("#resultTable").append('删除客户信息成功!');
+                $("#clientTable").find('tr').remove();
+                $("#clientTable").append('删除客户信息成功!');
             }
         });
     }
@@ -300,7 +300,7 @@ $(function () {
         getOrderById(oId);
     });
     function getOrderById(oid) {
-        $("#resultTable").find('tr').remove();
+        $("#orderTable").find('tr').remove();
         let th='<tr>' +
             '<th>订单编号</th>' +
             '<th>订单时间</th>' +
@@ -308,7 +308,7 @@ $(function () {
             '<th>负责销售人员</th>' +
             '<th>消费总金额</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#orderTable").append(th);
         $.ajax({
             type:'POST',
             url:'/Find',
@@ -321,8 +321,8 @@ $(function () {
                     '<td>'+data.clientId+'</td>'+
                     '<td>'+data.salesStaffId+'</td>'+
                     '<td>'+data.consumption+'</td>';
-                $("#resultTable").append('<tr>'+tds+'</tr>');
-                $("#resultTable").css("display","block");
+                $("#orderTable").append('<tr>'+tds+'</tr>');
+                $("#orderTable").css("display","block");
             }
         });
     }
@@ -330,7 +330,7 @@ $(function () {
         getAllOrders();
     });
     function getAllOrders() {
-        $("#resultTable").find('tr').remove();
+        $("#orderTable").find('tr').remove();
         let th='<tr>' +
             '<th>订单编号</th>' +
             '<th>订单时间</th>' +
@@ -338,7 +338,7 @@ $(function () {
             '<th>负责销售人员</th>' +
             '<th>消费总金额</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#orderTable").append(th);
         $.ajax({
             type:'POST',
             url:'/Query',
@@ -352,9 +352,9 @@ $(function () {
                         '<td>'+data[i].clientId+'</td>'+
                         '<td>'+data[i].salesStaffId+'</td>'+
                         '<td>'+data[i].consumption+'</td>';
-                    $("#resultTable").append('<tr>'+tds+'</tr>');
+                    $("#orderTable").append('<tr>'+tds+'</tr>');
                 }
-                $("#resultTable").css("display","block");
+                $("#orderTable").css("display","block");
             }
         });
     }
@@ -369,8 +369,8 @@ $(function () {
             url:'/Delete',
             data:{'object':'Client','ID':oid},
             success:function () {
-                $("#resultTable").find('tr').remove();
-                $("#resultTable").append('删除订单信息成功!');
+                $("#orderTable").find('tr').remove();
+                $("#orderTable").append('删除订单信息成功!');
             }
         });
     }

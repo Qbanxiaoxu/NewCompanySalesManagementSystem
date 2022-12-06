@@ -25,7 +25,7 @@ $(function () {
         getProductById(pId);
     });
     function getProductById(pid) {
-        $("#resultTable").find('tr').remove();
+        $("#productTable").find('tr').remove();
         let th='<tr>' +
             '<th>产品编号</th>' +
             '<th>产品名称</th>' +
@@ -33,7 +33,7 @@ $(function () {
             '<th>产品价格</th>' +
             '<th>产品库存量</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#productTable").append(th);
 
         $.ajax({
             type:'POST',
@@ -49,12 +49,8 @@ $(function () {
                     '<td>'+data.productDescription+'</td>'+
                     '<td>'+data.productPrice+'</td>'+
                     '<td>'+data.productInventory+'</td>';
-                $("#resultTable").append('<tr>'+tds+'</tr>');
-                $("#resultTable").css("display","block");
-            },
-            error:function (err) {
-                console.log(err.statusText);
-                console.log('fucking error');
+                $("#productTable").append('<tr>'+tds+'</tr>');
+                $("#productTable").css("display","block");
             }
         });
     }
@@ -62,7 +58,7 @@ $(function () {
         getAllProducts();
     });
     function getAllProducts() {
-        $("#resultTable").find('tr').remove();
+        $("#productTable").find('tr').remove();
         let th='<tr>' +
             '<th>产品编号</th>' +
             '<th>产品名称</th>' +
@@ -70,7 +66,7 @@ $(function () {
             '<th>产品价格</th>' +
             '<th>产品库存量</th>' +
             '</tr>'
-        $("#resultTable").append(th);
+        $("#productTable").append(th);
         $.ajax({
                 type:'POST',
                 url:'/Query',
@@ -84,9 +80,9 @@ $(function () {
                             '<td>'+data[i].productDescription+'</td>'+
                             '<td>'+data[i].productPrice+'</td>'+
                             '<td>'+data[i].productInventory+'</td>';
-                        $("#resultTable").append('<tr>'+tds+'</tr>');
+                        $("#productTable").append('<tr>'+tds+'</tr>');
                     }
-                    $("#resultTable").css("display","block");
+                    $("#productTable").css("display","block");
                 }
             }
         );

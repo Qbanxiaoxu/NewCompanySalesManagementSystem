@@ -3,11 +3,13 @@ $(function () {
     $(".menu-t2").click(function () {
         $("#resultBlock").css("display","block");
     });
-    function hide(id) {
-        let arr=[
-            'queryProductTable',
-            'queryOrderTable','delOrderTable','modifyOrderTable'
-        ];
+    let arrFunctionTable=[
+        'queryProductTable',
+        'queryOrderTable','delOrderTable','modifyOrderTable'
+    ];
+    let arrResultTable=['productTable','orderTable']
+    function hide(arr,id) {
+
         for(let i in arr){
             if(arr[i]==id){
                 $("#"+arr[i]).css("display","block");
@@ -19,13 +21,16 @@ $(function () {
     }
     $("#queryProduct").click(function () {
         $("#resultBlock").css("display","block");
-        hide("queryProductTable");
+        hide(arrFunctionTable,"queryProductTable");
+        hide(arrResultTable,"productTable");
     });
     $("#queryOrder").click(function () {
-        hide("queryOrderTable");
+        hide(arrFunctionTable,"queryOrderTable");
+        hide(arrResultTable,"orderTable");
     });
     $("#delOrder").click(function () {
-        hide("delOrderTable");
+        hide(arrFunctionTable,"delOrderTable");
+        hide(arrResultTable,"orderTable");
     });
     $(".functionTableClose").click(function () {
         $(".functionTable").css("display","none");

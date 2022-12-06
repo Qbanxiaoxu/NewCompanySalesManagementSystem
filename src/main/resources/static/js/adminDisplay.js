@@ -1,13 +1,14 @@
 $(function () {
 
+    let arrFunctionTable=[
+        'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable',
+        'queryProductTable','delProductTable','modifyProductTable',
+        'queryClientTable','delClientTable','modifyClientTable',
+        'queryOrderTable','delOrderTable','modifyOrderTable'
+    ];
+    let arrResultTable=['productTable','salesStaffTable','clientTable','orderTable'];
+    function hide(arr,id) {
 
-    function hide(id) {
-        let arr=[
-            'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable',
-            'queryProductTable','delProductTable','modifyProductTable',
-            'queryClientTable','delClientTable','modifyClientTable',
-            'queryOrderTable','delOrderTable','modifyOrderTable'
-        ];
         for(let i in arr){
             if(arr[i]==id){
                 $("#"+arr[i]).css("display","block");
@@ -16,20 +17,25 @@ $(function () {
                 $("#"+arr[i]).css("display","none");
             }
         }
+
     }
 
     //销售人员管理
     $("#querySalesStaff").click(function () {
-        hide("querySalesStaffTable");
+        hide(arrFunctionTable,"querySalesStaffTable");
+        hide(arrResultTable,"salesStaffTable");
     });
     $("#modifySalesStaff").click(function () {
-        hide("modifySalesStaffTable");
+        hide(arrFunctionTable,"modifySalesStaffTable");
+        hide(arrResultTable,"salesStaffTable");
     });
     $("#addSalesStaff").click(function () {
         $("#addSalesStaffModal").css("display","block");
+        hide(arrResultTable,"salesStaffTable");
     });
     $("#delSalesStaff").click(function () {
-        hide("delSalesStaffTable");
+        hide(arrFunctionTable,"delSalesStaffTable");
+        hide(arrResultTable,"salesStaffTable");
     });
     $("#showModifySalesStaffModalBtn").click(function () {
         $("#modifySalesStaffModal").css("display","block");
@@ -37,13 +43,18 @@ $(function () {
 
     //产品管理
     $("#queryProduct").click(function () {
-        hide("queryProductTable");
+        hide(arrFunctionTable,"queryProductTable");
+        hide(arrResultTable,"productTable");
     });
     $("#modifyProduct").click(function () {
-        hide("modifyProductTable");
+        hide(arrFunctionTable,"modifyProductTable");
+        hide(arrResultTable,"productTable");
+
     });
     $("#delProduct").click(function () {
-        hide("delProductTable");
+        hide(arrFunctionTable,"delProductTable");
+        hide(arrResultTable,"productTable");
+
     });
 
     $("#showModifyProductModalBtn").click(function () {
@@ -62,13 +73,17 @@ $(function () {
 
     //客户管理
     $("#queryClient").click(function () {
-        hide("queryClientTable");
+        hide(arrFunctionTable,"queryClientTable");
+        hide(arrResultTable,"clientTable");
+
     });
     $("#delClient").click(function () {
-        hide("delClientTable");
+        hide(arrFunctionTable,"delClientTable");
+        hide(arrResultTable,"clientTable");
     });
     $("#modifyClient").click(function () {
-        hide("modifyClientTable");
+        hide(arrFunctionTable,"modifyClientTable");
+        hide(arrResultTable,"clientTable");
     });
     $("#showModifyClientModalBtn").click(function () {
         $("#modifyClientModal").css("display","block");
@@ -79,13 +94,18 @@ $(function () {
     });
     //点击菜单栏触发订单管理事件
     $("#queryOrder").click(function () {
-        hide("queryOrderTable");
+        hide(arrFunctionTable,"queryOrderTable");
+        hide(arrResultTable,"orderTable");
     });
     $("#delOrder").click(function () {
-        hide("delOrderTable");
+        hide(arrFunctionTable,"delOrderTable");
+        hide(arrResultTable,"orderTable");
+
     });
     $("#modifyOrder").click(function () {
-        hide("modifyOrderTable");
+        hide(arrFunctionTable,"modifyOrderTable");
+        hide(arrResultTable,"orderTable");
+
     });
     $("#showModifyOrderModalBtn").click(function () {
         $("#modifyOrderModal").css("display","block");

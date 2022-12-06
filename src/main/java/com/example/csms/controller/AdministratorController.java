@@ -20,7 +20,8 @@ public class AdministratorController {
     private ModifyService modifyService;
     private GetService getService;
 
-    public AdministratorController(DeleteService deleteService) {
+    public AdministratorController(AddService addService, DeleteService deleteService) {
+        this.addService = addService;
         this.deleteService = deleteService;
     }
 
@@ -45,7 +46,6 @@ public class AdministratorController {
         return null;
     }
     @RequestMapping(value = "/AddSalesStaff", name="add",method= RequestMethod.POST)
-    @ResponseBody
     public String addCSalesStaff(SalesStaff salesStaff){
         if (salesStaff==null)
             return "404.html";

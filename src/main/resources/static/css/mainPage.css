@@ -70,3 +70,7 @@ input{
     width:100%;
     background: #4DD0E1;
 }
+#resultTable{
+    height:300px;
+    overflow: auto;
+}

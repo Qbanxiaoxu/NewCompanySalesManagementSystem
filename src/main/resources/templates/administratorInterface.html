@@ -9,6 +9,7 @@
     <script src="/js/jQuery3.6.1.js"></script>
     <script src="/js/baseOperation.js"></script>
     <script src="/js/administratorOp.js"></script>
+    <script src="/js/adminDisplay.js"></script>
 </head>
 <body>
 <div id="body">
@@ -104,12 +105,13 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">销售人员工号</td>
-                                <td><input type="text" placeholder="销售人员工号"></td>
+                                <td><input type="text" placeholder="销售人员工号" id="modifySalesStaffByIdBox"></td>
                                 <td><button id="showModifySalesStaffModalBtn">修改</button></td>
                             </tr>
                         </table>
                     </div>
                 </div>
+
 
                 <div id="delSalesStaffTable" class="functionTable">
                     <div class="functionTableHeader">
@@ -282,102 +284,63 @@
                 <div id="resultHeader">
                     <h3>结果</h3>
                 </div>
-                <div>
-                    <table id="resultTable" class="hide"></table>
+                <div id="resultTableBlock">
+                    <table id="resultTable"></table>
                 </div>
             </div>
 <!--            修改销售人员信息的弹窗-->
             <div id="modifySalesStaffModal" class="modal">
-                <div class="modalContent">
-                    <div class="modalHeader">
-                        <span class="close">&times;</span>
-                        <h3>修改销售人员信息</h3>
-                    </div>
-                    <div class="modalBody" style="text-align: center;margin: auto">
-                        <table class="modalTable" style="margin: auto">
-                            <tr>
-                                <td class="label">销售人员姓名</td>
-                                <td><input type="text" placeholder="销售人员姓名"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员密码</td>
-                                <td><input type="text" placeholder="销售人员密码"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员性别</td>
-                                <td><input type="text" placeholder="销售人员性别"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员地址</td>
-                                <td><input type="text" placeholder="销售人员地址"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员邮箱</td>
-                                <td><input type="text" placeholder="销售人员邮箱"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员薪水</td>
-                                <td><input type="text" placeholder="销售人员薪水"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"><button type="submit" id="modifySalesStaffBtn">确定</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+
             </div>
 <!--            增加销售人员信息的弹窗-->
-            <div id="addSalesStaffModal" class="modal">
-                <div class="modalContent">
-                    <div class="modalHeader">
-                        <span class="close">&times;</span>
-                        <h3>增加销售人员信息</h3>
-                    </div>
-                    <div class="modalBody" style="text-align: center;margin: auto">
-                        <table class="modalTable" style="margin: auto">
-                            <tr>
-                                <td class="label">销售人员姓名</td>
-                                <td><input type="text" placeholder="销售人员姓名"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员密码</td>
-                                <td><input type="text" placeholder="销售人员密码"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员性别</td>
-                                <td><input type="text" placeholder="销售人员性别"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员地址</td>
-                                <td><input type="text" placeholder="销售人员地址"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员邮箱</td>
-                                <td><input type="text" placeholder="销售人员邮箱"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">销售人员薪水</td>
-                                <td><input type="text" placeholder="销售人员薪水"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"><button type="submit" id="addSalesStaffBtn">确定</button></td>
-                            </tr>
-                        </table>
+            <form>
+                <div id="addSalesStaffModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>增加销售人员信息</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" style="margin: auto">
+                                <tr>
+                                    <td class="label">销售人员姓名</td>
+                                    <td><input type="text" placeholder="销售人员姓名" id="addSalesStaffNameBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">销售人员密码</td>
+                                    <td><input type="text" placeholder="销售人员密码"  id="addSalesStaffPsdBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">销售人员性别</td>
+                                    <td><input type="text" placeholder="销售人员性别" id="addSalesStaffGenderBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">销售人员地址</td>
+                                    <td><input type="text" placeholder="销售人员地址" id="addSalesStaffAddressBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">销售人员邮箱</td>
+                                    <td><input type="text" placeholder="销售人员邮箱" id="addSalesStaffEmailBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">销售人员薪水</td>
+                                    <td><input type="text" placeholder="销售人员薪水" id="addSalesStaffSalaryBox"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><input type="submit" id="addSalesStaffBtn" value="确定"></td>
+                                    <!--                                    <td colspan="2" style="text-align: center"><button type="submit" id="addSalesStaffBtn">确定</button></td>-->
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <!--更新产品的弹窗-->
             <div id="modifyProductModal" class="modal">
                 <div class="modalContent">
@@ -415,41 +378,43 @@
                 </div>
             </div>
             <!--新增产品的弹窗-->
-            <div id="addProductModal" class="modal">
-                <div class="modalContent">
-                    <div class="modalHeader">
-                        <span class="close">&times;</span>
-                        <h3>新增产品</h3>
-                    </div>
-                    <div class="modalBody" style="text-align: center;margin: auto">
-                        <table class="modalTable" style="margin: auto">
-                            <tr>
-                                <td class="label">产品名称</td>
-                                <td><input type="text" placeholder="产品名称"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">产品描述</td>
-                                <td><input type="text" placeholder="产品描述"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">产品价格</td>
-                                <td><input type="text" placeholder="产品价格"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">产品库存量</td>
-                                <td><input type="text" placeholder="产品库存量"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"><button type="submit" id="addProductBtn">确定</button></td>
-                            </tr>
-                        </table>
+            <form>
+                <div id="addProductModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>新增产品</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" style="margin: auto">
+                                <tr>
+                                    <td class="label">产品名称</td>
+                                    <td><input type="text" placeholder="产品名称" id="addProductName"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">产品描述</td>
+                                    <td><input type="text" placeholder="产品描述" id="addProductDescription"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">产品价格</td>
+                                    <td><input type="text" placeholder="产品价格" id="addProductPrice"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">产品库存量</td>
+                                    <td><input type="text" placeholder="产品库存量" id="addProductInventory"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><input type="submit" id="addProductBtn" value="确定"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <!--修改客户信息的弹窗-->
             <div id="modifyClientModal" class="modal">
                 <div class="modalContent">
@@ -492,46 +457,49 @@
                 </div>
             </div>
 <!--            增加客户信息的弹窗-->
-            <div id="addClientModal" class="modal">
-                <div class="modalContent">
-                    <div class="modalHeader">
-                        <span class="close">&times;</span>
-                        <h3>增加客户信息</h3>
-                    </div>
-                    <div class="modalBody" style="text-align: center;margin: auto">
-                        <table class="modalTable" style="margin: auto">
-                            <tr>
-                                <td class="label">客户姓名</td>
-                                <td><input type="text" placeholder="客户姓名"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">客户密码</td>
-                                <td><input type="text" placeholder="客户密码"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">客户性别</td>
-                                <td><input type="text" placeholder="客户性别"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">客户地址</td>
-                                <td><input type="text" placeholder="客户地址"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">客户邮箱</td>
-                                <td><input type="text" placeholder="客户地址"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"><button type="submit" id="addClientBtn">确定</button></td>
-                            </tr>
-                        </table>
+            <form>
+                <div id="addClientModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>增加客户信息</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" style="margin: auto">
+                                <tr>
+                                    <td class="label">客户姓名</td>
+                                    <td><input type="text" placeholder="客户姓名" id="addClientName"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">客户密码</td>
+                                    <td><input type="text" placeholder="客户密码" id="addClientPsd"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">客户性别</td>
+                                    <td><input type="text" placeholder="客户性别" id="addClientGender"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">客户地址</td>
+                                    <td><input type="text" placeholder="客户地址" id="addClientAddress"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">客户邮箱</td>
+                                    <td><input type="text" placeholder="客户邮箱" id="addClientEmail"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><input type="submit" id="addClientBtn" value="确定"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
 <!--            修改订单信息的弹窗-->
             <div id="modifyOrderModal" class="modal">
                 <div class="modalContent">
@@ -569,74 +537,50 @@
                 </div>
             </div>
 
-            <div id="addOrderModal" class="modal">
-                <div class="modalContent">
-                    <div class="modalHeader">
-                        <span class="close">&times;</span>
-                        <h3>修改订单信息</h3>
-                    </div>
-                    <div class="modalBody" style="text-align: center;margin: auto">
-                        <table class="modalTable" style="margin: auto">
-                            <tr>
-                                <td class="label">订单时间</td>
-                                <td><input type="text" placeholder="订单时间"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">下单客户</td>
-                                <td><input type="text" placeholder="下单客户"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">负责销售</td>
-                                <td><input type="text" placeholder="负责员工"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td class="label">总消费金额</td>
-                                <td><input type="text" placeholder="总消费金额"></td>
-                            </tr>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"><button type="submit" id="addOrderBtn">确定</button></td>
-                            </tr>
-                        </table>
+            <form>
+                <div id="addOrderModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>增加订单信息</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" style="margin: auto">
+                                <tr>
+                                    <td class="label">订单时间</td>
+                                    <td><input type="text" placeholder="订单时间" id="addOrderTime"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">下单客户</td>
+                                    <td><input type="text" placeholder="下单客户" id="addOrderClientId"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">负责销售</td>
+                                    <td><input type="text" placeholder="负责员工" id="addOrderSalesStaffId"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td class="label">总消费金额</td>
+                                    <td><input type="text" placeholder="总消费金额" id="addOrderConsumption"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><input type="submit" id="addOrderBtn" value="确定"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
 
         </div>
     </div>
 </div>
 <script>
-    $(function(){
-        // 点击菜单栏触发销售人员管理事件
-        $("#querySalesStaff").click(function () {
-            $("#querySalesStaffTable").css("display","block");
-        });
-        $("#modifySalesStaff").click(function () {
-            $("#modifySalesStaffTable").css("display","block");
-        });
-        $("#delSalesStaff").click(function () {
-            $("#delSalesStaffTable").css("display","block");
-        });
-        $("#showModifySalesStaffModalBtn").click(function () {
-            $("#modifySalesStaffModal").css("display","block");
 
-        });
-        $("#addSalesStaff").click(function () {
-            $("#addSalesStaffModal").css("display","block");
-        });
-
-        $(".functionTableClose").click(function () {
-            $(".functionTable").css("display","none");
-            $("#resultBlock").css("display","none");
-        });
-
-        $(".resultClose").click(function () {
-            $("#resultBlock").css("display","none");
-        });
-    });
 </script>
 </body>
 </html>

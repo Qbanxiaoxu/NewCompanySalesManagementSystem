@@ -14,6 +14,16 @@ public class SalesStaff {
   private long salesStaffSalary;
 
   public SalesStaff(){}
+
+//  public SalesStaff(long id,String psd,String name,String gender,String address,String email,long salary){
+//    this.salesStaffId=id;
+//    this.salesStaffPassword=psd;
+//    this.salesStaffName=name;
+//    this.salesStaffGender=gender;
+//    this.salesStaffAddress=address;
+//    this.salesStaffEmail=email;
+//    this.salesStaffSalary=salary;
+//  }
   public long getSalesStaffId() {
     return salesStaffId;
   }

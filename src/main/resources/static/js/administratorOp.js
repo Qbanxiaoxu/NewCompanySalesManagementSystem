@@ -1,5 +1,6 @@
 $(function () {
-    //进行销售人员管理
+
+    //-------------------------------进行销售人员管理
     $("#getSalesStaffByIdBtn").click(function () {
         let sId=$("#getSalesStaffByIdBox").val();
         sId=sId*1;
@@ -92,8 +93,41 @@ $(function () {
             }
         });
     }
-    //进行产品管理
+    $("#addSalesStaffBtn").click(function () {
+        let name=$("#addSalesStaffNameBox").val();
+        let psd=$("#addSalesStaffPsdBox").val();
+        let gender=$("#addSalesStaffGenderBox").val();
+        let address=$("#addSalesStaffAddressBox").val();
+        let email=$("#addSalesStaffEmailBox").val();
+        let salary=$("#addSalesStaffSalaryBox").val();
+        salary=salary*1;
+        addSalesStaff(psd,name,gender,address,email,salary);
+    });
+    function addSalesStaff(psd,name,gender,address,email,salary){//传的是null？？
+        let salesStaff={
+            'salesStaffId':null,
+            'salesStaffPassword':psd,
+            'salesStaffName':name,
+            'salesStaffGender':gender,
+            'salesStaffAddress':address,
+            'salesStaffEmail':email,
+            'salesStaffSalary':salary
+        };
+        $.ajax({
+            type:'POST',
+            url:'/AddSalesStaff',
+            traditional:true,
+            dataType:'json',
+            data:JSON.stringify(salesStaff),
+            contentType:'application/json;charset=UTF-8',
+            success:function () {
+                $("#addSalesStaffModal").css("display","none");
+                getAllSalesStaffs();
+            }
+        });
+    }
 
+    //------------------------------进行产品管理
     $("#delProductBtn").click(function () {
        let pId=$("#delProductBox").val();
        pId=pId*1;
@@ -112,7 +146,37 @@ $(function () {
 
         });
     }
-    //进行客户管理
+    $("#addProductBtn").click(function () {
+        let pName=$("#addProductName").val();
+        let pDescription=$("#addProductDescription").val();
+        let pPrice=$("#addProductPrice").val();
+        let pInventory=$("#addProductInventory").val();
+        pPrice=pPrice*1;
+        pInventory=pInventory*1;
+        addProduct(pName,pDescription,pPrice,pInventory);
+    });
+    function addProduct(name,description,price,inventory) {
+        let product={
+            'productId':null,
+            'productName':name,
+            'productDescription':description,
+            'productPrice':price,
+            'productInventory':inventory
+        };
+        $.ajax({
+            type:'POST',
+            url:'/AddProduct',
+            traditional: true,
+            data:JSON.stringify(product),
+            contentType:'application/json;charset=UTF-8',
+            dataType:'json',
+            success:function () {
+                $("#addProductModal").css("display","none");
+            }
+        });
+    }
+
+    //-----------------------------进行客户管理
     $("#getClientByIdBtn").click(function () {
         let cId=$("#getSalesStaffByIdBox").val();
         cId=cId*1;
@@ -198,7 +262,38 @@ $(function () {
             }
         });
     }
-    //进行订单管理
+
+    $("#addClientBtn").click(function () {
+       let cPsd=$('#addClientPsd').val();
+       let cName=$("#addClientName").val();
+       let cGender=$("#addClientGender").val();
+       let cAddress=$("#addClientAddress").val();
+       let cEmail=$("#addClientEmail").val();
+       addClient(cPsd,cName,cGender,cAddress,cEmail);
+    });
+    function addClient(psd,name,gender,address,email) {
+        let client={
+          'clientId':null,
+          'clientPassword':psd,
+          'clientName':name,
+          'clientGender':gender,
+          'clientAddress':address,
+          'clientEmail':email
+        };
+        $.ajax({
+            type:'POST',
+            url:'AddClient',
+            traditional: true,
+            data:JSON.stringify(client),
+            contentType:'application/json;charset=UTF-8',
+            dataType:'json',
+            success:function () {
+                $("#addClientModal").css("display","none");
+            }
+        });
+    }
+
+    //-------------------------------进行订单管理-----------------------
     $("#getOrderByIdBtn").click(function () {
         let oId=$("#getOrderByIdBox").val();
         oId=oId*1;
@@ -225,7 +320,7 @@ $(function () {
                     '<td>'+data.orderTime+'</td>'+
                     '<td>'+data.clientId+'</td>'+
                     '<td>'+data.salesStaffId+'</td>'+
-                    '<td>'+data.comsumption+'</td>';
+                    '<td>'+data.consumption+'</td>';
                 $("#resultTable").append('<tr>'+tds+'</tr>');
                 $("#resultTable").css("display","block");
             }
@@ -256,7 +351,7 @@ $(function () {
                         '<td>'+data[i].orderTime+'</td>'+
                         '<td>'+data[i].clientId+'</td>'+
                         '<td>'+data[i].salesStaffId+'</td>'+
-                        '<td>'+data[i].comsumption+'</td>';
+                        '<td>'+data[i].consumption+'</td>';
                     $("#resultTable").append('<tr>'+tds+'</tr>');
                 }
                 $("#resultTable").css("display","block");
@@ -276,6 +371,34 @@ $(function () {
             success:function () {
                 $("#resultTable").find('tr').remove();
                 $("#resultTable").append('删除订单信息成功!');
+            }
+        });
+    }
+    $("#addOrderBtn").click(function () {
+       let oTime=$("#addOrderTime").val();
+       let oClient=$("#addOrderClientId").val();
+       let oSales=$("#addOrderSalesStaffId").val();
+       let oConsumption=$("#addOrderConsumption").val();
+       oConsumption=oConsumption*1;
+       addOrder(oTime,oClient,oSales,oConsumption);
+    });
+    function addOrder(time,client,sales,consumption) {
+        let order={
+            'orderId':null,
+            'orderTime':time,
+            'orderClientId':client,
+            'orderSalesStaffId':sales,
+            'orderConsumption':consumption
+        };
+        $.ajax({
+            type:'POST',
+            url:'/AddOrder',
+            traditional: true,
+            data:JSON.stringify(order),
+            contentType:'application/json;charset=UTF-8',
+            dataType:'json',
+            success:function () {
+                $("#addOrderModal").css("display","none");
             }
         });
     }

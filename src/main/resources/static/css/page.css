@@ -9,14 +9,13 @@
 #content{
     display: flex;
     flex-direction: row;
-    height:90%;
+    height:1000px;
 }
 #title{
     width:90%;
     height:80px;
     color:white;
     text-align: left;
-    /*padding-left: 50px;*/
     background-color:#4DD0E1 ;
 }
 #welcomeMsg{
@@ -29,11 +28,13 @@
     background-color: #E0F7FA;
     width:25%;
     height: 1000px;
+    bottom: 0;
 }
 #rightContent{
     width:75%;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 #resultBlock{
     z-index: -2;
@@ -46,7 +47,7 @@
     display: inline-block;
 }
 #resultTable{
+    /*display: none;*/
     border-collapse: collapse;
-
     border:1px solid black;
 }

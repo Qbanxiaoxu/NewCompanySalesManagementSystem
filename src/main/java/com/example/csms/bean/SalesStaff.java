@@ -16,8 +16,14 @@ public class SalesStaff {
   public SalesStaff(){}
 
     public SalesStaff(String username, String password, String email) {
-    this.salesStaffName=username;this.salesStaffPassword=password;this.salesStaffEmail=email;}
-
+      this.salesStaffName = username;
+      this.salesStaffPassword = password;
+      this.salesStaffEmail = email;
+      this.salesStaffId=0;
+      this.salesStaffAddress="";
+      this.salesStaffGender="M";
+      this.salesStaffSalary=3000;
+    }
     public long getSalesStaffId() {
     return salesStaffId;
   }

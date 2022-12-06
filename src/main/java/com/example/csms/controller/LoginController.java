@@ -61,6 +61,6 @@ public class LoginController {
                 default -> {}
             }
         }
-        return "redirect:/loginView";
+        return "redirect:/loginView?result=defeat";
     }
 }

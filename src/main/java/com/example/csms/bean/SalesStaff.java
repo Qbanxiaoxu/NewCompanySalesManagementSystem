@@ -14,7 +14,11 @@ public class SalesStaff {
   private long salesStaffSalary;
 
   public SalesStaff(){}
-  public long getSalesStaffId() {
+
+    public SalesStaff(String username, String password, String email) {
+    this.salesStaffName=username;this.salesStaffPassword=password;this.salesStaffEmail=email;}
+
+    public long getSalesStaffId() {
     return salesStaffId;
   }
 

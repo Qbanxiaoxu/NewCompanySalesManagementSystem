@@ -66,7 +66,9 @@ public class ClientController {
      * 下订单
      */
     @RequestMapping(value = "/PlaceOrder", name = "下单")
-    public void placeOrder(){}
+    public void placeOrder(){
+
+    }
 
     @RequestMapping(value = "/ModifyClient", name = "modify",method = RequestMethod.POST)
     @ResponseBody

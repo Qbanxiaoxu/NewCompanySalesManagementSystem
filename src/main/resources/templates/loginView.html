@@ -233,7 +233,7 @@
 
         <div class="user singupBx">
             <div class="formBx">
-                <form action="/Signup" method="post">
+                <form action="/SignUp" method="post">
                     <h2>Sign Up</h2>
                     <input type="text" name="username" placeholder="Username">
                     <input type="email" name="email" placeholder="Email">
@@ -241,7 +241,7 @@
                     <input type="password" name="confirmPassword" placeholder="Confirm password">
                     <table>
                         Identity:<tr>
-                        <td><input type="radio" name="identity" value="customer"/>client</td>
+                        <td><input type="radio" name="identity" value="client"/>client</td>
                         <td><input type="radio" name="identity" value="sales staff"/>sales staff</td>
                         <td><input type="radio" name="identity" value="manager"/>manager</td>
                     </tr>
@@ -256,13 +256,13 @@
     </div>
 </section>
 <script type="text/javascript">
-    function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-        if (r != null) return unescape(r[2]);
-        return null; //返回参数值
-    }
     window.onload=function () {
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
         let error = getUrlParam("error");
         let empty=getUrlParam("empty");
         let equal=getUrlParam("equal");
@@ -276,8 +276,8 @@
         if(equal==="no"){
             alert("Password inconsistency!")
         }
-        if(result==="yes"){
-            alert("Successfully signup!");
+        if(result==="defeat"){
+            alert("Failed to signup!");
         }
     }
     function topggleForm(){

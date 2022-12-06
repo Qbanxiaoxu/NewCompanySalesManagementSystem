@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/css/modal.css">
     <link rel="stylesheet" type="text/css" href="/css/mainPage.css">
     <script src="/js/jQuery3.6.1.js"></script>
-    <script src="/js/administratorInterface.js"></script>
+    <script src="/js/baseOperation.js"></script>
+    <script src="/js/administratorOp.js"></script>
 </head>
 <body>
 <div id="body">
@@ -16,7 +17,7 @@
             <h1>公司销售管理系统</h1>
         </div>
         <div id="welcomeMsg" class="floatLeft">
-            <p style="font-size: 20px;">欢迎您</p>
+            <div id="displayUsername" style="font-size: 20px">欢迎您<br></div>
         </div>
     </div>
 
@@ -86,7 +87,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">销售人员工号</td>
-                                <td><input type="text" placeholder="销售人员工号"></td>
+                                <td><input type="text" placeholder="销售人员工号" id="getSalesStaffByIdBox"></td>
                                 <td><button id="getSalesStaffByIdBtn">查询</button></td>
                                 <td><button id="getAllSalesStaffsBtn">查询所有销售人员</button></td>
                             </tr>
@@ -119,7 +120,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">销售人员工号</td>
-                                <td><input type="text" placeholder="销售人员工号"></td>
+                                <td><input type="text" placeholder="销售人员工号" id="delSalesStaffByIdBox"></td>
                                 <td><button id="delSalesStaffBtn">删除</button></td>
                             </tr>
                         </table>
@@ -135,7 +136,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">产品编号</td>
-                                <td><input type="text" placeholder="产品编号"></td>
+                                <td><input type="text" placeholder="产品编号" id="getProductByIdBox"></td>
                                 <td><button id="getProductByIdBtn">查询</button></td>
                                 <td><button id="getAllProductsBtn">查询所有产品</button></td>
                             </tr>
@@ -185,7 +186,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">客户编号</td>
-                                <td><input type="text" placeholder="客户编号"></td>
+                                <td><input type="text" placeholder="客户编号" id="getClientByIdBox"></td>
                                 <td><button id="getClientByIdBtn">查询</button></td>
                                 <td><button id="getAllClientsBtn">查询所有客户</button></td>
                             </tr>
@@ -218,7 +219,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">客户编号</td>
-                                <td><input type="text" placeholder="客户编号"></td>
+                                <td><input type="text" placeholder="客户编号" id="delClientByIdBox"></td>
                                 <td><button id="delClientBtn">删除</button></td>
                             </tr>
                         </table>
@@ -235,7 +236,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><input type="text" placeholder="订单编号" id="getOrderByIdBox"></td>
                                 <td><button id="getOrderByIdBtn">查询</button></td>
                                 <td><button id="getAllOrdersBtn">查询所有订单</button></td>
                             </tr>
@@ -268,7 +269,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><input type="text" placeholder="订单编号" id="delProductBox"></td>
                                 <td><button id="delOrderBtn">删除</button></td>
                             </tr>
                         </table>
@@ -281,8 +282,8 @@
                 <div id="resultHeader">
                     <h3>结果</h3>
                 </div>
-                <div id="resultTable">
-
+                <div>
+                    <table id="resultTable" class="hide"></table>
                 </div>
             </div>
 <!--            修改销售人员信息的弹窗-->
@@ -292,8 +293,8 @@
                         <span class="close">&times;</span>
                         <h3>修改销售人员信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">销售人员姓名</td>
                                 <td><input type="text" placeholder="销售人员姓名"></td>
@@ -338,8 +339,8 @@
                         <span class="close">&times;</span>
                         <h3>增加销售人员信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">销售人员姓名</td>
                                 <td><input type="text" placeholder="销售人员姓名"></td>
@@ -384,8 +385,8 @@
                         <span class="close">&times;</span>
                         <h3>更新产品</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">产品名称</td>
                                 <td><input type="text" placeholder="产品名称"></td>
@@ -420,8 +421,8 @@
                         <span class="close">&times;</span>
                         <h3>新增产品</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">产品名称</td>
                                 <td><input type="text" placeholder="产品名称"></td>
@@ -456,8 +457,8 @@
                         <span class="close">&times;</span>
                         <h3>修改客户信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">客户姓名</td>
                                 <td><input type="text" placeholder="客户姓名"></td>
@@ -497,8 +498,8 @@
                         <span class="close">&times;</span>
                         <h3>增加客户信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">客户姓名</td>
                                 <td><input type="text" placeholder="客户姓名"></td>
@@ -538,8 +539,8 @@
                         <span class="close">&times;</span>
                         <h3>修改订单信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="margin: auto">
+                        <table style="margin: auto">
                             <tr>
                                 <td class="label">订单时间</td>
                                 <td><input type="text" placeholder="订单时间"></td>
@@ -574,8 +575,8 @@
                         <span class="close">&times;</span>
                         <h3>修改订单信息</h3>
                     </div>
-                    <div class="modalBody" style="margin-left: 600px;">
-                        <table>
+                    <div class="modalBody" style="text-align: center;margin: auto">
+                        <table class="modalTable" style="margin: auto">
                             <tr>
                                 <td class="label">订单时间</td>
                                 <td><input type="text" placeholder="订单时间"></td>
@@ -609,23 +610,6 @@
 </div>
 <script>
     $(function(){
-        let username=getUrlParam('username');
-        let psd=getUrlParam('password');
-        function getUrlParam(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-            if (r != null) return unescape(r[2]); return null; //返回参数值
-        }
-        $("#welcomeMsg").append('<p style="font-size: 20px;">'+username+'</p>');
-        // 隐藏二级标题
-        $(".hide").hide();
-        $(".menu-t1").click(function(){
-            $(".hide").slideUp();
-            $(this).next().slideToggle();
-        });
-        $(".menu-t2").click(function () {
-            $("#resultBlock").css("display","block");
-        })
         // 点击菜单栏触发销售人员管理事件
         $("#querySalesStaff").click(function () {
             $("#querySalesStaffTable").css("display","block");
@@ -644,63 +628,6 @@
             $("#addSalesStaffModal").css("display","block");
         });
 
-        // 点击菜单栏触发产品管理事件
-        $("#queryProduct").click(function () {
-            $("#queryProductTable").css("display","block");
-        });
-        $("#delProduct").click(function () {
-            $("#delProductTable").css("display","block");
-        });
-        $("#modifyProduct").click(function () {
-            $("#modifyProductTable").css("display","block");
-        });
-        $("#showModifyProductModalBtn").click(function () {
-            $("#modifyProductModal").css("display","block");
-            
-        });
-        $("#addProduct").click(function () {
-            $("#addProductModal").css("display","block");
-        });
-
-        //点击菜单栏触发客户管理事件
-        $("#queryClient").click(function () {
-            $("#queryClientTable").css("display","block");
-        });
-        $("#delClient").click(function () {
-            $("#delClientTable").css("display","block");
-        });
-        $("#modifyClient").click(function () {
-            $("#modifyClientTable").css("display","block");
-        });
-        $("#showModifyClientModalBtn").click(function () {
-            $("#modifyClientModal").css("display","block");
-
-        });
-        $("#addClient").click(function () {
-            $("#addClientModal").css("display","block");
-        });
-        //点击菜单栏触发订单管理事件
-        $("#queryOrder").click(function () {
-            $("#queryOrderTable").css("display","block");
-        });
-        $("#delOrder").click(function () {
-            $("#delOrderTable").css("display","block");
-        });
-        $("#modifyOrder").click(function () {
-            $("#modifyOrderTable").css("display","block");
-        });
-        $("#showModifyOrderModalBtn").click(function () {
-            $("#modifyOrderModal").css("display","block");
-
-        });
-        $("#addOrder").click(function () {
-            $("#addOrderModal").css("display","block");
-        });
-        $(".close").click(function () {
-            // $("#updateProductModal").css("display","none");
-            $(".modal").css("display","none");
-            $("#resultBlock").css("display","none");
-        });
         $(".functionTableClose").click(function () {
             $(".functionTable").css("display","none");
             $("#resultBlock").css("display","none");

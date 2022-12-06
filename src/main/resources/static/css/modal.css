@@ -10,11 +10,14 @@
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    text-align: center;
+    margin:auto;
 }
 .modalContent{
     position: relative;
     background-color: #fefefe;
     margin: auto;
+    text-align: center;
     padding: 0;
     border: 1px solid #888;
     width: 80%;
@@ -39,7 +42,14 @@
     color: white;
 }
 
-.modalBody {padding: 2px 16px;}
+.modalBody {
+    text-align: center;
+    margin: auto;
+    /*padding: 2px 16px;*/
+}
+.modalTable{
+    margin: auto;
+}
 .close {
     color: white;
     float: right;

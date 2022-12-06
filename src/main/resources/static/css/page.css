@@ -45,3 +45,8 @@
     height: 200px;
     display: inline-block;
 }
+#resultTable{
+    border-collapse: collapse;
+
+    border:1px solid black;
+}

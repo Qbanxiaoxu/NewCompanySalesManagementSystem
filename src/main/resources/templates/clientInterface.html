@@ -4,95 +4,163 @@
     <meta charset="UTF-8">
     <title>客户界面</title>
     <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/mainPage.css">
     <script src="/js/jQuery3.6.1.js"></script>
-    <script src="/js/clientInterface.js"></script>
+    <script src="/js/clientOp.js"></script>
 
 </head>
 <body>
-<h1>公司销售管理系统</h1>
-<div class="Menu">
-    <ul class="menu">
-        <li id="selfInformationManagement">
-            个人信息
-        </li>
-        <li id="productInformation">
-            产品信息
-        </li>
-        <li id="orderManagement">
-            订单管理
-        </li>
-    </ul>
-</div>
-<!--右侧内容区-->
-<div class="right" id="content">
-    <div id="selfInformationManagementBlock" class="hide">
-        <table id="showSelfInformationTable">
+<div id="body">
+    <div id="header">
+        <div id="title" class="floatLeft">
+            <h1>公司销售管理系统</h1>
+        </div>
+        <div id="welcomeMsg" class="floatLeft" style="display: inline-block">
+            <div id="displayUsername" style="font-size: 20px">欢迎您<br></div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="menuBlock" class="floatLeft">
+            <ul id="menu">
+                <li>
+                    <p class="menu-t1">个人管理</p>
+                    <ul class="hide">
+                        <li class="menu-t2" id="querySelaInformation">查看</li>
+                        <li class="menu-t2" id="modifySelfInformation">修改</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="menu-t1" id="queryProduct">查询产品信息</p>
+                </li>
 
-        </table>
-        <button id="showModifyInformationForm">修改个人信息</button>
-        <form id="modifySelfInformationForm" class="hide">
-            <table>
-                <tr>
-                    <td>姓名：</td>
-                    <td><input id="modifySelfName"></td>
-                    <td>密码</td>
-                    <td><input id="modifySelfPsd"></td>
-                </tr>
-                <tr>
-                    <td>性别：</td>
-                    <td><input id="modifySelfGender"></td>
-                    <td>地址:</td>
-                    <td><input id="modifySelfAddress"></td>
-                </tr>
-                <tr>
-                    <td>邮箱：</td>
-                    <td><input id="modifyEmail"></td>
-                    <td><button id="modifySelfInformationBtn">确定</button></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    <div id="productInformationBlock" class="hide">
-        产品名称：
-        <input id="searchProductBox">
-        <button id="searchProductBtn">查找</button>
-        <table id="showProductTable"></table>
-    </div>
-    <div id="orderManagementBlock" class="hide">
-        <button id="searchFormerOrdersBtn">
-            查询历史订单
-        </button>
-        <button id="createNewOrdersBtn">
-            新建订单
-        </button>
-        <table id="showFormerOrdersTable">
+                <li>
+                    <p class="menu-t1">订单管理</p>
+                    <ul class="hide">
+                        <li class="menu-t2" id="queryOrder">查询历史订单</li>
+                        <li class="menu-t2" id="delOrder">删除历史订单</li>
+                        <li class="menu-t2" id="addOrder">新增订单</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="rightContent">
+            <div id="functionBlock">
+                <!--                    查询产品-->
+                <div id="queryProductTable"   class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>查询产品信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">产品编号</td>
+                                <td><input type="text" placeholder="产品编号" id="getProductByIdBox"></td>
+                                <td><button id="getProductByIdBtn">查询</button></td>
+                                <td><button id="getAllProductsBtn">查询所有产品</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-        </table>
+                <div id="queryOrderTable"   class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>查询订单信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">订单编号</td>
+                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><button id="getOrderByIdBtn">查询</button></td>
+                                <td><button id="getAllOrdersBtn">查询所有订单</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="modifyOrderTable" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>修改订单信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">订单编号</td>
+                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><button id="showModifyOrderModalBtn">修改</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="delOrderTable" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>删除订单信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">订单编号</td>
+                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><button id="delOrderBtn">删除</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!--                订单管理-->
+
+            <div id="resultBlock">
+                <div id="resultHeader">
+                    <h3>结果</h3>
+                </div>
+                <div id="resultTable">
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-<div>
-</div>
+
 <script>
     $(function () {
-        $("#selfInformationManagement").click("click",function () {
-            $("#selfInformationManagementBlock").css("display","block");
-            $("#productInformationBlock").css("display","none");
-            $("#orderManagementBlock").css("display","none");
-        })
-        $("#productInformation").click("click",function () {
-
-            $("#productInformationBlock").css("display","block");
-            $("#orderManagementBlock").css("display","none");
-            $("#selfInformationManagementBlock").css("display","none");
-
+        $(".hide").hide();
+        $(".menu-t1").click(function(){
+            $(".hide").slideUp();
+            $(this).next().slideToggle();
         });
-        $("#orderManagement").click("click",function () {
-            $("#orderManagementBlock").css("display","block");
-            $("#productInformationBlock").css("display","none");
-            $("#selfInformationManagementBlock").css("display","none");
-
-        })
-    })
+        $(".menu-t2").click(function () {
+            $("#resultBlock").css("display","block");
+        });
+        $("#queryProduct").click(function () {
+            $("#queryProductTable").css("display","block");
+            $("#resultBlock").css("display","block");
+        });
+        $("#queryOrder").click(function () {
+            $("#queryOrderTable").css("display","block");
+        });
+        $("#delOrder").click(function () {
+            $("#delOrderTable").css("display","block");
+        });
+        $(".functionTableClose").click(function () {
+            $(".functionTable").css("display","none");
+            $("#resultBlock").css("display","none");
+        });
+        let username=getUrlParam('username');
+        let psd=getUrlParam('password');
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        $("#displayUsername").append(username);
+    });
 </script>
 
 </body>

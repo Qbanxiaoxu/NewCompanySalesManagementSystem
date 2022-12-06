@@ -20,6 +20,10 @@ public class AdministratorController {
     private ModifyService modifyService;
     private GetService getService;
 
+    public AdministratorController(DeleteService deleteService) {
+        this.deleteService = deleteService;
+    }
+
     /**
      * 添加客户、产品、销售人员、管理人员
      *

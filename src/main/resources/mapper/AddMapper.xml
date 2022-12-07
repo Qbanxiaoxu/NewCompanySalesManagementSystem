@@ -9,7 +9,7 @@
         insert into clients (clientPassword,clientName,clientGender,clientAddress,clientEmail) values (#{clientPassword},#{clientName},#{clientGender},#{clientAddress},#{clientEmail})
     </insert>
     <insert id="addOrder" parameterType="com.example.csms.bean.Order">
-        insert into orders(orderTime, clientId, salesStaffId, consumption) VALUES (#{orderTime},#{orderClientId},#{orderSalesStaffId},#{orderConsumption})
+        insert into orders(orderTime, clientId, salesStaffId, consumption) VALUES (#{orderTime},#{clientId},#{salesStaffId},#{consumption})
     </insert>
     <insert id="addOrderDetail" parameterType="com.example.csms.bean.OrderDetail">
         INSERT INTO orderdetails(orderDetailId, productId, productNumber, totalPrice) VALUES (#{orderDetailId},#{productId},#{productNumber},#{totalPrice})

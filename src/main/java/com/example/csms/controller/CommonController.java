@@ -4,7 +4,7 @@ import com.example.csms.bean.*;
 import com.example.csms.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +20,17 @@ public class CommonController {
     private ModifyService modifyService;
     private GetService getService;
 
+    public CommonController(QueryService queryService) {
+        this.queryService = queryService;
+    }
+
     /**
      * 查询客户信息、产品信息、销售人员信息、订单信息
      *
      * @return {@link String}
      */
     @RequestMapping(value = "/Query", name = "query")
+    @ResponseBody
     public String query(HttpServletRequest request){
         String object=request.getParameter("object");
         StringBuilder json=new StringBuilder();

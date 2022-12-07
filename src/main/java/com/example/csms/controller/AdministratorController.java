@@ -20,6 +20,11 @@ public class AdministratorController {
     private ModifyService modifyService;
     private GetService getService;
 
+    public AdministratorController(AddService addService, DeleteService deleteService) {
+        this.addService = addService;
+        this.deleteService = deleteService;
+    }
+
     /**
      * 添加客户、产品、销售人员、管理人员
      *
@@ -41,7 +46,6 @@ public class AdministratorController {
         return null;
     }
     @RequestMapping(value = "/AddSalesStaff", name="add",method= RequestMethod.POST)
-    @ResponseBody
     public String addCSalesStaff(SalesStaff salesStaff){
         if (salesStaff==null)
             return "404.html";

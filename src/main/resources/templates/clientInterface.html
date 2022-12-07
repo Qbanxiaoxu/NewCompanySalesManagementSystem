@@ -1,121 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>client</title>
-</head>
     <title>客户界面</title>
-    <style>
-        .border{
-            border-bottom: black solid 1px;
-            border-left: black solid 1px;
-            border-right:black solid 1px;
-            border-top: black solid 1px;
-        }
-        #personalInfoTable{
-            width: 400px;
-            height: 250px;
-        }
-        #show{
-            border: black 1px solid;
-            width: auto;
-            height: 500px;
-        }
-        #content{
-            width: auto;height: auto;
-        }
-    </style>
-    <script src="../static/js/jQuery3.6.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/css/mainPage.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
+    <script src="/js/jQuery3.6.1.js"></script>
+    <script src="/js/clientOp.js"></script>
+    <script src="/js/baseOperation.js"></script>
+    <script src="/js/clientDisplay.js"></script>
+
 </head>
 <body>
-<input type="hidden" id="username" name="username" value="<%=username%>">
-<input type="hidden" id="password" name="password" value="<%=password%>">
-<input type="hidden" id="identity" name="identity" value="<%=identity%>">
-<input type="hidden" id="id" name="id" value="<%=ID%>">
-<input type="hidden" id="gender" name="gender" value="<%=gender%>">
-<input type="hidden" id="email" name="email" value="<%=email%>">
-<input type="hidden" id="address" name="address" value="<%=address%>">
-<table id="personalInfoTable" class="border">
-    <tr><th>个人信息</th></tr>
-    <tr><td>工号</td><td><%out.println(ID);%></td></tr>
-    <tr><td>名字</td><td><%out.println(username);%></td></tr>
-    <tr><td>性别</td><td><%out.println(gender);%></td></tr>
-    <tr><td>邮箱</td><td><%out.println(email);%></td></tr>
-    <tr><td>地址</td><td><%out.println(address);%></td></tr>
-</table>
-
-<div id="show">
-    <div id="optionBox">
-        <input type="button" id="queryProductInformation" value="查询产品信息">
-        <input type="button" id="modifyInformation" value="修改信息">
-        <input type="button" id="queryOrderInformation" value="查看订单">
-        <input type="button" id="addOrder" value="下单">
+<div id="body">
+    <div id="header">
+        <div id="title" class="floatLeft">
+            <h1>公司销售管理系统</h1>
+        </div>
+        <div id="welcomeMsg" class="floatLeft" style="display: inline-block">
+            <div id="displayUsername" style="font-size: 20px">欢迎您<br></div>
+        </div>
     </div>
     <div id="content">
-        <div id="showDetails"></div>
+        <div id="menuBlock" class="floatLeft">
+            <ul id="menu">
+                <li>
+                    <p class="menu-t1">个人管理</p>
+                    <ul class="hide">
+                        <li class="menu-t2" id="querySelfInformation">查看</li>
+                        <li class="menu-t2" id="modifySelfInformation">修改</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="menu-t1" id="queryProduct">查询产品信息</p>
+                </li>
+
+                <li>
+                    <p class="menu-t1" >订单管理</p>
+                    <ul class="hide">
+                        <li class="menu-t2" id="queryOrder">查询历史订单</li>
+                        <li class="menu-t2" id="delOrder">删除历史订单</li>
+                        <li class="menu-t2" id="addOrder">新增订单</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="rightContent">
+            <div id="functionBlock">
+                <!--                    查询产品-->
+                <div id="queryProductTable"   class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>查询产品信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">产品编号</td>
+                                <td><input type="text" placeholder="产品编号" id="getProductByIdBox"></td>
+                                <td><button id="getProductByIdBtn">查询</button></td>
+                                <td><button id="getAllProductsBtn">查询所有产品</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="queryOrderTable"   class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>查询订单信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">订单编号</td>
+                                <td><input type="text" placeholder="订单编号" id="queryOrderBox"></td>
+                                <td><button id="getOrderByIdBtn">查询</button></td>
+                                <td><button id="getAllOrdersBtn">查询所有订单</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="addOrderTable" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>下单</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td><button id="showAddOrderModalBtn">下单</button></td>
+                                <td><button id="showShoppingCartModalBtn">查看购物车</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div id="delOrderTable" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>删除订单信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td class="label">订单编号</td>
+                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><button id="delOrderBtn">删除</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!--                订单管理-->
+
+            <div id="resultBlock">
+                <div id="resultHeader">
+                    <h3>结果</h3>
+                </div>
+                <div class="resultTable">
+                    <table id="productTable"></table>
+                    <table id="orderTable">
+
+                    </table>
+                </div>
+            </div>
+
+            <form>
+                <div id="addOrderModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>新增订单</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" id="addOrderDetailTable" style="margin: auto">
+                                <tr>
+                                    <td><div class="label">产品编号</div></td>
+                                    <td><input type="text" id="addOrderProductIdBox" placeholder="产品编号"></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="label">产品数量</div></td>
+                                    <td><input type="text" id="addOrderProductNumberBox" placeholder="产品数量"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" id="addOrderDetailBtn" value="确认下单"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <form>
+                <div id="shoppingCartModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>购物车</h3>
+                            <input type="submit" id="addOrderBtn" value="提交订单">
+
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" id="shoppingCart" style="margin: auto;display: none">
+<!--                                <input type="submit" id="addOrderBtn" value="提交订单">-->
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
 
 <script>
-    $(document).ready(function(){
-        $("#queryProductInformation").click(function(){
-            $.post("ProductInformationManagement",
-                {
-                    operation:"queryProductInformation",
-                    identity:"client"
-                },
-                function(data,status){
-                    if(status==="success") {
-                        $("#showDetails").html("");
-                        let productsList = JSON.parse(data);
-                        let html="<table width=\"50%\" border=\"1px\"> <tr><th>产品信息</th></tr><tr><td>编号</td><td>名称</td><td>描述</td><td>价格</td><td>库存量</td></tr>"
-                        for (let i = 0; i < productsList.length; i++) {
-                            let products = productsList[i];
-                            html += "<tr>";
-                            html += "<td>" + products.pid + "</td>";
-                            html += "<td>" + products.pname + "</td>";
-                            html += "<td>" + products.pdescription + "</td>";
-                            html += "<td>" + products.pprice + "</td>";
-                            html += "<td>" + products.pinventory + "</td>";
-                            html += "</tr>";
-                        }
-                        html+="</table>"
-                        document.getElementById("showDetails").innerHTML = html;
-                    }
-                    else {alert( data + "\n" + status)}
-                });
-        });
-        $("#queryOrderInformation").click(function(){
-            $.post("OrderManagement",
-                {
-                    operation:"queryOrderInformation",
-                    identity:"client",
-                    username:document.getElementById("username").value(),
-                    password:document.getElementById("password").value(),
-                    id:document.getElementById("id").value()
-                },
-                function(data,status){
-                    if(status==="success") {
-                        $("#showDetails").html("");
-                        let productsList = JSON.parse(data);
-                        let html="<table width=\"50%\" border=\"1px\"> <tr><th>产品信息</th></tr><tr><td>编号</td><td>名称</td><td>描述</td><td>价格</td><td>库存量</td></tr>"
-                        for (let i = 0; i < productsList.length; i++) {
-                            let products = productsList[i];
-                            html += "<tr>";
-                            html += "<td>" + products.pid + "</td>";
-                            html += "<td>" + products.pname + "</td>";
-                            html += "<td>" + products.pdescription + "</td>";
-                            html += "<td>" + products.pprice + "</td>";
-                            html += "<td>" + products.pinventory + "</td>";
-                            html += "</tr>";
-                        }
-                        html+="</table>"
-                        document.getElementById("showDetails").innerHTML = html;
-                    }
-                    else {alert( data + "\n" + status)}
-                });
-        });
+    $("#addOrder").click(function () {
+       $("#addOrderTable").css("display","block");
+    });
+    $("#showAddOrderModalBtn").click(function () {
+        $("#addOrderModal").css("display","block");
+    });
+    $("#showShoppingCartModalBtn").click(function () {
+        $("#shoppingCartModal").css("display","block");
+    });
+    $(".close").click(function () {
+        $(".modal").css("display","none");
+        $("#resultBlock").css("display","none");
     });
 </script>
 

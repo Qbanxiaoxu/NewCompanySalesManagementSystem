@@ -1,5 +1,7 @@
 package com.example.csms.bean;
 
+import java.sql.Timestamp;
+
 /**
  * @author 徐兴盼
  */
@@ -13,6 +15,15 @@ public class Order {
 
 
   public Order(){}
+
+  public Order(int orderId, Timestamp orderTime, int clientId, int salesStaffId, long consumption) {
+    this.orderId=orderId;
+    this.orderTime=orderTime;
+    this.clientId=clientId;
+    this.salesStaffId=salesStaffId;
+    this.consumption=consumption;
+  }
+
   public long getOrderId() {
     return orderId;
   }

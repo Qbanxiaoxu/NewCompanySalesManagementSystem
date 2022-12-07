@@ -162,6 +162,7 @@ public class CommonController {
      * @return {@link String}
      */
     @RequestMapping(value = "/Find", name = "find")
+    @ResponseBody
     public String findById(HttpServletRequest request) {
         String object = request.getParameter("object");
         int id = Integer.parseInt(request.getParameter("ID"));
@@ -353,6 +354,6 @@ public class CommonController {
             jsonStr = json.substring(0, json.length() - 1) + "]";
             return jsonStr;
         }
-        return "";
+        return "404.html";
     }
 }

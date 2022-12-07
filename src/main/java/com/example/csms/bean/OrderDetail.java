@@ -12,7 +12,15 @@ public class OrderDetail {
 
 
   public OrderDetail(){}
-  public long getOrderDetailId() {
+
+    public OrderDetail(int orderDetailId, int productId, int productNum, long totalPrice) {
+      this.orderDetailId = orderDetailId;
+      this.productId = productId;
+      this.productNumber = productNum;
+      this.totalPrice = totalPrice;
+    }
+
+    public long getOrderDetailId() {
     return orderDetailId;
   }
 

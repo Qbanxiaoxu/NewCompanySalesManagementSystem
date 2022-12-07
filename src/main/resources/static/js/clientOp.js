@@ -10,11 +10,11 @@ $(document).ready(() => {
     }
 
     $("#querySelfInformation").click(function () {
-        document.getElementById("orderTable").innerHTML=""
+        document.getElementById("orderTable").innerHTML="";
         // document.getElementById("salesStaffTable").innerHTML=""
-        document.getElementById("productTable").innerHTML=""
+        document.getElementById("productTable").innerHTML="";
         // document.getElementById("clientTable").innerHTML=""
-        document.getElementById("personalTable").innerHTML=""
+        document.getElementById("personalTable").innerHTML="";
         // alert(nm+"\n"+pwd);
         $.post("/PersonalInfo",
             {

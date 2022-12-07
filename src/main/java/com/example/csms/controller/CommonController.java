@@ -287,13 +287,11 @@ public class CommonController {
         String object = request.getParameter("object");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        System.out.println(object+"\n"+username+"\n"+password);
         StringBuilder json = new StringBuilder();
         json.append("[");
         String jsonStr = "";
         if (object.equals("Administrator")) {
             Administrator administrator = loginVerifyService.verifyAdministrator(username,password);
-if(administrator==null) System.out.println("cao");
             json.append("{\"administratorId\":");
             json.append(administrator.getAdministratorId());
             json.append(",\"administratorPassword\":\"");

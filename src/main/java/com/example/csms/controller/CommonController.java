@@ -19,6 +19,8 @@ public class CommonController {
     private QueryService queryService;
     private ModifyService modifyService;
     private GetService getService;
+    @Resource
+    private LoginVerifyService loginVerifyService;
 
     public CommonController(QueryService queryService) {
         this.queryService = queryService;
@@ -159,7 +161,7 @@ public class CommonController {
      * @return {@link String}
      */
     @RequestMapping(value = "/Find", name = "find")
-    public String find(HttpServletRequest request) {
+    public String findById(HttpServletRequest request) {
         String object = request.getParameter("object");
         int id = Integer.parseInt(request.getParameter("ID"));
         StringBuilder json = new StringBuilder();
@@ -278,5 +280,77 @@ public class CommonController {
             return jsonStr;
         }
         return "404.html";
+    }
+    @RequestMapping(value = "/PersonalInfo", name = "personal info")
+    @ResponseBody
+    public String findByInfo(HttpServletRequest request) {
+        String object = request.getParameter("object");
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        System.out.println(object+"\n"+username+"\n"+password);
+        StringBuilder json = new StringBuilder();
+        json.append("[");
+        String jsonStr = "";
+        if (object.equals("Administrator")) {
+            Administrator administrator = loginVerifyService.verifyAdministrator(username,password);
+if(administrator==null) System.out.println("cao");
+            json.append("{\"administratorId\":");
+            json.append(administrator.getAdministratorId());
+            json.append(",\"administratorPassword\":\"");
+            json.append(administrator.getAdministratorPassword());
+            json.append("\",\"administratorName\":\"");
+            json.append(administrator.getAdministratorName());
+            json.append("\",\"administratorGender\":\"");
+            json.append(administrator.getAdministratorGender());
+            json.append("\",\"administratorAddress\":\"");
+            json.append(administrator.getAdministratorAddress());
+            json.append("\",\"administratorEmail\":\"");
+            json.append(administrator.getAdministratorEmail());
+            json.append("\"},");
+            jsonStr = json.substring(0, json.length() - 1) + "]";
+            return jsonStr;
+        }
+        if (object.equals("Client")) {
+            Client client = loginVerifyService.verifyClient(username,password);
+
+            json.append("{\"clientId\":");
+            json.append(client.getClientId());
+            json.append(",\"clientPassword\":\"");
+            json.append(client.getClientPassword());
+            json.append("\",\"clientName\":\"");
+            json.append(client.getClientName());
+            json.append("\",\"clientGender\":\"");
+            json.append(client.getClientGender());
+            json.append("\",\"clientAddress\":\"");
+            json.append(client.getClientAddress());
+            json.append("\",\"clientEmail\":\"");
+            json.append(client.getClientEmail());
+            json.append("\"},");
+            jsonStr = json.substring(0, json.length() - 1) + "]";
+            return jsonStr;
+        }
+        if (object.equals("SalesStaff")) {
+            SalesStaff salesStaff = loginVerifyService.verifySalesStaff(username,password);
+
+            json.append("{\"salesStaffId\":");
+            json.append(salesStaff.getSalesStaffId());
+            json.append(",\"salesStaffPassword\":\"");
+            json.append(salesStaff.getSalesStaffPassword());
+            json.append("\",\"salesStaffName\":\"");
+            json.append(salesStaff.getSalesStaffName());
+            json.append("\",\"salesStaffGender\":\"");
+            json.append(salesStaff.getSalesStaffGender());
+            json.append("\",\"salesStaffAddress\":\"");
+            json.append(salesStaff.getSalesStaffAddress());
+            json.append("\",\"salesStaffEmail\":\"");
+            json.append(salesStaff.getSalesStaffEmail());
+            json.append("\",\"salesStaffSalary\":");
+            json.append(salesStaff.getSalesStaffSalary());
+            json.append("},");
+
+            jsonStr = json.substring(0, json.length() - 1) + "]";
+            return jsonStr;
+        }
+        return "";
     }
 }

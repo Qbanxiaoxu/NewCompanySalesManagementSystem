@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>管理员界面</title>
@@ -7,9 +7,10 @@
     <link rel="stylesheet" type="text/css" href="/css/modal.css">
     <link rel="stylesheet" type="text/css" href="/css/mainPage.css">
     <script src="/js/jQuery3.6.1.js"></script>
-    <script src="/js/baseOperation.js"></script>
+
     <script src="/js/administratorOp.js"></script>
     <script src="/js/adminDisplay.js"></script>
+    <script src="/js/baseOperation.js"></script>
 </head>
 <body>
 <div id="body">
@@ -19,6 +20,8 @@
         </div>
         <div id="welcomeMsg" class="floatLeft">
             <div id="displayUsername" style="font-size: 20px">欢迎您<br></div>
+            <div id="personInfo">
+            </div>
         </div>
     </div>
 
@@ -29,7 +32,7 @@
                 <li>
                     <p class="menu-t1">个人管理</p>
                     <ul class="hide">
-                        <li class="menu-t2" id="querySelaInformation">查看</li>
+                        <li class="menu-t2" id="queryPersonalInfo">查看</li>
                         <li class="menu-t2" id="modifySelfInformation">修改</li>
                     </ul>
                 </li>
@@ -289,6 +292,7 @@
                     <table id="productTable"></table>
                     <table id="clientTable"></table>
                     <table id="orderTable"></table>
+                    <table id="personalTable"></table>
                 </div>
             </div>
 <!--            修改销售人员信息的弹窗-->

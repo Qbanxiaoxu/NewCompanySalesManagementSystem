@@ -1,9 +1,9 @@
 $(function () {
 
     let arrFunctionTable=[
-        'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable',
-        'queryProductTable','delProductTable','modifyProductTable',
-        'queryClientTable','delClientTable','modifyClientTable',
+        'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable','addSalesStaffTable',
+        'queryProductTable','delProductTable','modifyProductTable','addProductTable',
+        'queryClientTable','delClientTable','modifyClientTable','addClientTable',
         'queryOrderTable','delOrderTable','modifyOrderTable'
     ];
     let arrResultTable=['productTable','salesStaffTable','clientTable','orderTable'];
@@ -30,8 +30,8 @@ $(function () {
         hide(arrResultTable,"salesStaffTable");
     });
     $("#addSalesStaff").click(function () {
-        $("#addSalesStaffModal").css("display","block");
-        hide(arrResultTable,"salesStaffTable");
+       hide(arrFunctionTable,"addSalesStaffTable");
+       $("#resultBlock").css("display","none");
     });
     $("#delSalesStaff").click(function () {
         hide(arrFunctionTable,"delSalesStaffTable");
@@ -56,14 +56,15 @@ $(function () {
         hide(arrResultTable,"productTable");
 
     });
-
+    $("#addProduct").click(function () {
+        hide(arrFunctionTable,"addProductTable");
+        $("#resultBlock").css("display","none");
+    });
     $("#showModifyProductModalBtn").click(function () {
         $("#modifyProductModal").css("display","block");
 
     });
-    $("#addProduct").click(function () {
-        $("#addProductModal").css("display","block");
-    });
+
 
     //关闭功能窗口
     $(".functionTableClose").click(function () {
@@ -80,6 +81,11 @@ $(function () {
     $("#delClient").click(function () {
         hide(arrFunctionTable,"delClientTable");
         hide(arrResultTable,"clientTable");
+    });
+    $("#addClient").click(function () {
+       hide(arrFunctionTable,"addClientTable");
+        $("#resultBlock").css("display","none");
+
     });
     $("#modifyClient").click(function () {
         hide(arrFunctionTable,"modifyClientTable");
@@ -111,9 +117,7 @@ $(function () {
         $("#modifyOrderModal").css("display","block");
 
     });
-    $("#addOrder").click(function () {
-        $("#addOrderModal").css("display","block");
-    });
+
 
     $(".close").click(function () {
         $(".modal").css("display","none");

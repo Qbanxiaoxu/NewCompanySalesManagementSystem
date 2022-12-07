@@ -5,9 +5,9 @@ $(function () {
         $(".hide").slideUp();
         $(this).next().slideToggle();
     });
-    $(".menu-t2").click(function () {
-        $("#resultBlock").css("display","block");
-    });
+    // $(".menu-t2").click(function () {
+    //     $("#resultBlock").css("display","block");
+    // });
     //-------------------------------进行个人信息管理
     let username=getUrlParam('username');
     let psd=getUrlParam('password');
@@ -19,6 +19,7 @@ $(function () {
     }
 
     $("#displayUsername").append(username);
+
     $("#getProductByIdBtn").click(function () {
         let pId=$("#getProductByIdBox").val();
         pId=pId*1;

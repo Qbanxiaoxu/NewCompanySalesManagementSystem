@@ -374,32 +374,5 @@ $(function () {
             }
         });
     }
-    $("#addOrderBtn").click(function () {
-       let oTime=$("#addOrderTime").val();
-       let oClient=$("#addOrderClientId").val();
-       let oSales=$("#addOrderSalesStaffId").val();
-       let oConsumption=$("#addOrderConsumption").val();
-       oConsumption=oConsumption*1;
-       addOrder(oTime,oClient,oSales,oConsumption);
-    });
-    function addOrder(time,client,sales,consumption) {
-        let order={
-            'orderId':null,
-            'orderTime':time,
-            'orderClientId':client,
-            'orderSalesStaffId':sales,
-            'orderConsumption':consumption
-        };
-        $.ajax({
-            type:'POST',
-            url:'/AddOrder',
-            traditional: true,
-            data:JSON.stringify(order),
-            contentType:'application/json;charset=UTF-8',
-            dataType:'json',
-            success:function () {
-                $("#addOrderModal").css("display","none");
-            }
-        });
-    }
+
 });

@@ -8,7 +8,7 @@ ul{
     list-style-type: none;
 }
 .functionTable{
-    display: inline-block;
+    display: none;
     width: 100%;
 }
 .menu-t1{
@@ -41,9 +41,7 @@ input{
     width:160px;
     height:30px;
 }
-.functionTable{
-    display: none;
-}
+
 .functionTableHeader{
     background: #e9e9e9;
     float: left;

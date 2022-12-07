@@ -98,7 +98,6 @@
                     </div>
                 </div>
 
-
                 <div id="delOrderTable" class="functionTable">
                     <div class="functionTableHeader">
                         <span class="functionTableClose">&times;</span>
@@ -124,9 +123,7 @@
                 </div>
                 <div class="resultTable">
                     <table id="productTable"></table>
-                    <table id="orderTable">
-
-                    </table>
+                    <table id="orderTable"></table>
                 </div>
             </div>
 
@@ -181,15 +178,33 @@
 </div>
 
 <script>
+    let arrFunctionTable=[
+        'queryProductTable', 'queryOrderTable','delOrderTable','addOrderTable'];
+
+    function hide(arr,id) {
+
+        for(let i in arr){
+            if(arr[i]==id){
+                $("#"+arr[i]).css("display","block");
+            }
+            else{
+                $("#"+arr[i]).css("display","none");
+            }
+        }
+    }
     $("#addOrder").click(function () {
-       $("#addOrderTable").css("display","block");
+        hide(arrFunctionTable,"addOrderTable");
+        $("#resultBlock").css("display","none");
     });
+
     $("#showAddOrderModalBtn").click(function () {
         $("#addOrderModal").css("display","block");
     });
+
     $("#showShoppingCartModalBtn").click(function () {
         $("#shoppingCartModal").css("display","block");
     });
+
     $(".close").click(function () {
         $(".modal").css("display","none");
         $("#resultBlock").css("display","none");

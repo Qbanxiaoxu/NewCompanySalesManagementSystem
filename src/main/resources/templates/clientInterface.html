@@ -5,6 +5,7 @@
     <title>客户界面</title>
     <link rel="stylesheet" type="text/css" href="/css/page.css">
     <link rel="stylesheet" type="text/css" href="/css/mainPage.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
     <script src="/js/jQuery3.6.1.js"></script>
     <script src="/js/clientOp.js"></script>
     <script src="/js/baseOperation.js"></script>
@@ -27,7 +28,7 @@
                 <li>
                     <p class="menu-t1">个人管理</p>
                     <ul class="hide">
-                        <li class="menu-t2" id="querySelaInformation">查看</li>
+                        <li class="menu-t2" id="querySelfInformation">查看</li>
                         <li class="menu-t2" id="modifySelfInformation">修改</li>
                     </ul>
                 </li>
@@ -36,7 +37,7 @@
                 </li>
 
                 <li>
-                    <p class="menu-t1">订单管理</p>
+                    <p class="menu-t1" >订单管理</p>
                     <ul class="hide">
                         <li class="menu-t2" id="queryOrder">查询历史订单</li>
                         <li class="menu-t2" id="delOrder">删除历史订单</li>
@@ -74,9 +75,24 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号"></td>
+                                <td><input type="text" placeholder="订单编号" id="queryOrderBox"></td>
                                 <td><button id="getOrderByIdBtn">查询</button></td>
                                 <td><button id="getAllOrdersBtn">查询所有订单</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="addOrderTable" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>下单</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable">
+                            <tr>
+                                <td><button id="showAddOrderModalBtn">下单</button></td>
+                                <td><button id="showShoppingCartModalBtn">查看购物车</button></td>
                             </tr>
                         </table>
                     </div>
@@ -113,13 +129,69 @@
                     </table>
                 </div>
             </div>
+
+            <form>
+                <div id="addOrderModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>新增订单</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" id="addOrderDetailTable" style="margin: auto">
+                                <tr>
+                                    <td><div class="label">产品编号</div></td>
+                                    <td><input type="text" id="addOrderProductIdBox" placeholder="产品编号"></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="label">产品数量</div></td>
+                                    <td><input type="text" id="addOrderProductNumberBox" placeholder="产品数量"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" id="addOrderDetailBtn" value="确认下单"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+            <form>
+                <div id="shoppingCartModal" class="modal">
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <span class="close">&times;</span>
+                            <h3>新增产品</h3>
+                        </div>
+                        <div class="modalBody" style="text-align: center;margin: auto">
+                            <table class="modalTable" id="shoppingCart" style="margin: auto;display: none">
+                                <input type="submit" id="addOrderBtn" value="提交订单">
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>
 </div>
 
 <script>
-
+    $("#addOrder").click(function () {
+       $("#addOrderTable").css("display","block");
+    });
+    $("#showAddOrderModalBtn").click(function () {
+        $("#addOrderModal").css("display","block");
+    });
+    $("#showShoppingCartModalBtn").click(function () {
+        $("#shoppingCartModal").css("display","block");
+    });
+    $(".close").click(function () {
+        $(".modal").css("display","none");
+        $("#resultBlock").css("display","none");
+    });
 </script>
 
 </body>

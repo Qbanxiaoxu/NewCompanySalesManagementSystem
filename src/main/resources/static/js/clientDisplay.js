@@ -4,8 +4,7 @@ $(function () {
         $("#resultBlock").css("display","block");
     });
     let arrFunctionTable=[
-        'queryProductTable',
-        'queryOrderTable','delOrderTable','modifyOrderTable'
+        'queryProductTable', 'queryOrderTable','delOrderTable','addOrderTable'
     ];
     let arrResultTable=['productTable','orderTable']
     function hide(arr,id) {
@@ -28,12 +27,22 @@ $(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
     });
+    // $("#addOrder").click(function () {
+    //     hide(arrFunctionTable,"addOrderTable");
+    // });
     $("#delOrder").click(function () {
         hide(arrFunctionTable,"delOrderTable");
         hide(arrResultTable,"orderTable");
     });
+
+
     $(".functionTableClose").click(function () {
         $(".functionTable").css("display","none");
         $("#resultBlock").css("display","none");
     });
+
+
+
+
+
 });

@@ -15,6 +15,16 @@ public class Administrator {
 
 
   public Administrator(){}
+
+  public Administrator(String username, String password, String email) {
+    this.administratorName = username;
+    this.administratorPassword = password;
+    this.administratorEmail = email;
+    this.administratorId = 0;
+    this.administratorGender = "M";
+    this.administratorAddress = "";
+  }
+
   public long getAdministratorId() {
     return administratorId;
   }

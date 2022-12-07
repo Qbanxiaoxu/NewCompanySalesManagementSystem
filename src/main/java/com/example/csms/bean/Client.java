@@ -14,7 +14,17 @@ public class Client {
 
 
   public Client(){}
-  public long getClientId() {
+
+    public Client(String username, String password, String email) {
+      this.clientName = username;
+      this.clientPassword = password;
+      this.clientEmail = email;
+      this.clientId=0;
+      this.clientAddress="";
+      this.clientGender="M";
+    }
+
+    public long getClientId() {
     return clientId;
   }
 

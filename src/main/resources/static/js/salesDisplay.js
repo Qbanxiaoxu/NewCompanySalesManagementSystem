@@ -7,7 +7,7 @@ $(function () {
         'queryClientTable',
         'queryOrderTable'
     ];
-    let arrResultTable=['productTable','clientTable','orderTable'];
+    let arrResultTable=['productTable','clientTable','orderTable','personalTable'];
     function hide(arr,id) {
 
         for(let i in arr){

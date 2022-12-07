@@ -9,7 +9,7 @@ $(function () {
         'queryClientTable','delClientTable','modifyClientTable','addClientTable',
         'queryOrderTable','delOrderTable','modifyOrderTable'
     ];
-    let arrResultTable=['productTable','salesStaffTable','clientTable','orderTable'];
+    let arrResultTable=['productTable','salesStaffTable','clientTable','orderTable','personalTable'];
     function hide(arr,id) {
 
         for(let i in arr){

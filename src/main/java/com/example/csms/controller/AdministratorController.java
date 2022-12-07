@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class AdministratorController {
@@ -103,7 +104,21 @@ public class AdministratorController {
      * @return {@link String}
      */
     @RequestMapping(value = "/CheckTurnover", name = "查看公司营业额")
-    public String getTurnover(){return "";}
+    public String getTurnover(){
+        StringBuilder json=new StringBuilder();
+        json.append("[");
+        String jsonStr="";
+        List<Order> orderInfo = queryService.queryOrders();
+        long turnover=0;
+        for(Order order:orderInfo){
+            turnover+=order.getConsumption();
+        }
+        json.append("{\"turnover\":");
+        json.append(turnover);
+        json.append("}");
+        jsonStr=json.substring(0,json.length())+"]";
+        return jsonStr;
+    }
 
     /**
      * 查看产品销售
@@ -111,7 +126,28 @@ public class AdministratorController {
      * @return {@link String}
      */
     @RequestMapping(value = "/CheckProductSales", name = "查看产品销售情况")
-    public String viewProductSales(){return "";}
+    public String viewProductSales(HttpServletRequest request){
+        int productId= Integer.parseInt(request.getParameter("productId"));
+        StringBuilder json=new StringBuilder();
+        json.append("[");
+        String jsonStr="";
+        List<OrderDetail> orderDetails = queryService.queryOrderDetails();
+        long turnover=0;
+        int productNum=0;
+        for(OrderDetail orderDetail:orderDetails){
+            if(orderDetail.getProductId()==productId) {
+                turnover += orderDetail.getTotalPrice();
+                productNum+=orderDetail.getProductNumber();
+            }
+        }
+        json.append("{\"turnover\":");
+        json.append(turnover);
+        json.append("{\"productNumber\":");
+        json.append(productNum);
+        json.append("}");
+        jsonStr=json.substring(0,json.length())+"]";
+        return jsonStr;
+    }
 
     @RequestMapping(value = "/ModifyAdministrator", name = "modify",method = RequestMethod.POST)
     @ResponseBody

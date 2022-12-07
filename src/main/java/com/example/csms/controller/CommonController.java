@@ -285,9 +285,11 @@ public class CommonController {
     @RequestMapping(value = "/PersonalInfo", name = "personal info")
     @ResponseBody
     public String findByInfo(HttpServletRequest request) {
+
         String object = request.getParameter("object");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
+        //System.out.println(object+"\n"+username+"\n"+password);
         StringBuilder json = new StringBuilder();
         json.append("[");
         String jsonStr = "";
@@ -307,6 +309,7 @@ public class CommonController {
             json.append(administrator.getAdministratorEmail());
             json.append("\"},");
             jsonStr = json.substring(0, json.length() - 1) + "]";
+            //System.out.println(administrator.getAdministratorGender());
             return jsonStr;
         }
         if (object.equals("Client")) {

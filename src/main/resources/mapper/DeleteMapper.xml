@@ -15,7 +15,7 @@
     <delete id="deleteOrder">
         delete
         from orders
-        where orderId=#{orderId};
+        where orderId=#{orderId}
     </delete>
     <delete id="deleteProduct">
         delete from products where productId=#{productId}

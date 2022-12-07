@@ -4,7 +4,7 @@ $(function () {
     //     $("#resultBlock").css("display","block");
     // });
     let arrFunctionTable=[
-        'queryProductTable', 'queryOrderTable','delOrderTable','addOrderTable'];
+        'queryProductTable','queryOrderTable','delOrderTable','addOrderTable','personalInformation'];
 
     let arrResultTable=['productTable','orderTable'];
 
@@ -20,18 +20,18 @@ $(function () {
         }
     }
     $("#queryProduct").click(function () {
-        $("#resultBlock").css("display","block");
         hide(arrFunctionTable,"queryProductTable");
         hide(arrResultTable,"productTable");
-            $("#resultBlock").css("display","block");
-
+        $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
     });
     $("#queryOrder").click(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
-            $("#resultBlock").css("display","block");
+        $("#resultBlock").css("display","block");
 
     });
+
 
 
     // $("#addOrder").click(function () {

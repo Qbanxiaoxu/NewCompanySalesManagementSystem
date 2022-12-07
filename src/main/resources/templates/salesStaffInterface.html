@@ -49,6 +49,18 @@
             <!--        功能区-->
             <div id="functionBlock">
 
+<!--                个人信息管理-->
+                <div id="personalInformation"   class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>查看个人信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable" id="personalTable">
+                        </table>
+                    </div>
+                </div>
+
                 <!--                产品管理-->
                 <div id="queryProductTable"   class="functionTable">
                     <div class="functionTableHeader">
@@ -59,7 +71,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">产品编号</td>
-                                <td><input type="text" placeholder="产品编号"></td>
+                                <td><input type="text" placeholder="产品编号" id="getProductByIdBox"></td>
                                 <td><button id="getProductByIdBtn">查询</button></td>
                                 <td><button id="getAllProductsBtn">查询所有产品</button></td>
                             </tr>
@@ -111,7 +123,6 @@
                     <h3>结果</h3>
                 </div>
                 <div class="resultTable">
-                    <table id="personalTable"></table>
                     <table id="productTable"></table>
                     <table id="clientTable"></table>
                     <table id="orderTable"></table>

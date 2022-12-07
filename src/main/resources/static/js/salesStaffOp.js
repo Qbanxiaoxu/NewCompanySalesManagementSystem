@@ -1,7 +1,3 @@
-$(function () {
-
-});
-
 $(document).ready(() => {
 
     var nm=getUrlParam('username');
@@ -14,6 +10,8 @@ $(document).ready(() => {
     }
 
     $("#querySelfInformation").click(function () {
+        $("#resultBlock").css("display","none");
+        $(".functionTable").css("display","none");
         document.getElementById("orderTable").innerHTML=""
         // document.getElementById("salesStaffTable").innerHTML=""
         document.getElementById("productTable").innerHTML=""
@@ -30,25 +28,52 @@ $(document).ready(() => {
             function (data, status) {
                 if (status === "success") {
                     let personalList = JSON.parse(data);
-                    let html = "<tr><th colspan=\"5\">个人信息</th></tr><tr><td>编号</td><td>姓名</td><td>性别</td><td>邮箱</td><td>住址</td><td>工资</td></tr>"
+                    let html ="";
 
                     for (let i = 0; i < personalList.length; i++) {
                         let personal = personalList[i];
                         html += "<tr>";
+                        html +="<td class='label'>ID</td>"
                         html += "<td>" + personal.salesStaffId + "</td>";
-                        html += "<td>" + personal.salesStaffName + "</td>";
-                        html += "<td>" + personal.salesStaffGender + "</td>";
-                        html += "<td>" + personal.salesStaffEmail + "</td>";
-                        html += "<td>" + personal.salesStaffAddress + "</td>";
-                        html += "<td>" + personal.salesStaffSalary + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +="<td class='label'>密码</td>"
+                        html += "<td>" + personal.salesStaffPassword + "</td>";
+                        html += "</tr>";
 
+                        html += "<tr>";
+                        html +="<td class='label'>用户名</td>"
+                        html += "<td>" + personal.salesStaffName + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +="<td class='label'>性别</td>"
+                        html += "<td>" + personal.salesStaffGender + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +="<td class='label'>邮箱</td>"
+                        html += "<td>" + personal.salesStaffEmail + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +="<td class='label'>地址</td>"
+                        html += "<td>" + personal.salesStaffAddress + "</td>";
+                        html += "</tr>";
+                        html +="<td class='label'>薪资</td>"
+                        html += "<td>" + personal.salesStaffSalary + "</td>";
                         html += "</tr>";
                     }
                     document.getElementById("personalTable").innerHTML=html;
-                    // $("#personalTable").append(html);
+                    $("#personalInformation").css("display","block");
                 } else {
                     alert(data + "\n" + status)
                 }
             });
+    });
+
+    $("#getClientByIdBtn").click(function () {
+        let cId=$("#getClientByIdBox").val();
+        cId=Number(cId);
+        $.post(
+            '/'
+        )
     });
 });

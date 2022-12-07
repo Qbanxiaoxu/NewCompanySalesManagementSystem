@@ -23,41 +23,53 @@ $(function () {
     $("#displayUsername").append(username);
 
     $("#getProductByIdBtn").click(function () {
+        document.getElementById("productTable").innerHTML='';
         let pId=$("#getProductByIdBox").val();
         pId=pId*1;
-        getProductById(pId);
-    });
-    function getProductById(pid) {
-        $("#productTable").find('tr').remove();
-        let th='<tr>' +
-            '<th>产品编号</th>' +
-            '<th>产品名称</th>' +
-            '<th>产品描述</th>' +
-            '<th>产品价格</th>' +
-            '<th>产品库存量</th>' +
-            '</tr>'
-        $("#productTable").append(th);
-        $.ajax({
-            type:'POST',
-            url:'/Find',
-            dataType:'json',
-            data:{'object':'Product','ID':pid},
-            success:function (data) {
-                let product=JSON.parse(data);
-                let tds='';
-                tds='<td>'+product.productId+'</td>'+
-                    '<td>'+product.productName+'</td>'+
-                    '<td>'+product.productDescription+'</td>'+
-                    '<td>'+product.productPrice+'</td>'+
-                    '<td>'+product.productInventory+'</td>';
-                $("#productTable").append('<tr>'+tds+'</tr>');
-                $("#productTable").css("display","block");
+        alert(pId);
+        $.post(
+            '/Find',
+            {
+                object:'Product',
+                ID:pId,
             },
-            error:function (e) {
-              alert(e.errorText);
+            function (data, status) {
+                if (status === "success") {
+                    let productList = JSON.parse(data);
+                    let html='';
+                    for (let i = 0; i < productList.length; i++) {
+                        let product = productList[i];
+                        html += "<tr>";
+                        html +=" <td class='label'>产品编号</td>"
+                        html += "<td>" + product.productId+ "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +=" <td class='label'>产品名称</td>";
+                        html += "<td>" + product.productName + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +=" <td class='label'>产品描述</td>";
+                        html += "<td>" +product.productDescription + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +=" <td class='label'>产品价格</td>";
+                        html += "<td>" + product.productPrice + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                        html +=" <td class='label'>邮箱</td>";
+                        html += "<td>" +product.productInventory + "</td>";
+                        html += "</tr>";
+                        html += "<tr>";
+                    }
+                    document.getElementById("productTable").innerHTML=html;
+                    $("#productTable").css("display","block");
+                } else {
+                    alert(data + "\n" + status)
+                }
             }
-        });
-    }
+        );
+    });
+
     $("#getAllProductsBtn").click(function () {
         getAllProducts();
     });

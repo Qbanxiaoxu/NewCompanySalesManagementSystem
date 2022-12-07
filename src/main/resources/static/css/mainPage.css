@@ -68,7 +68,7 @@ input{
     width:100%;
     background: #4DD0E1;
 }
-#resultTable{
+#resultTableBlock{
     height:300px;
     overflow: auto;
 }

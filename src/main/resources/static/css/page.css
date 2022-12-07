@@ -47,4 +47,9 @@
     /*display: none;*/
     border-collapse: collapse;
     border:1px solid black;
+    mso-cellspacing: 2px;
 }
+#salesStaffTable{
+    border:1px solid black;
+}
+

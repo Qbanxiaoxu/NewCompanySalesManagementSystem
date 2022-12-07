@@ -80,6 +80,7 @@ public class AdministratorController {
      * 删除管理人员、客户、销售人员、订单、订单明细、产品
      */
     @RequestMapping(value = "/Delete", name = "delete")
+    @ResponseBody
     public void delete(HttpServletRequest request){
         int ID= Integer.parseInt(request.getParameter("ID"));
         String object=request.getParameter("object");

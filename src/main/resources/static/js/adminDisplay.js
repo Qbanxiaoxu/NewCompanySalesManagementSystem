@@ -7,7 +7,7 @@ $(function () {
         'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable','addSalesStaffTable',
         'queryProductTable','delProductTable','modifyProductTable','addProductTable',
         'queryClientTable','delClientTable','modifyClientTable','addClientTable',
-        'queryOrderTable','delOrderTable','modifyOrderTable'
+        'queryOrderTable','delOrderTable','modifyOrderTable','personalInformation'
     ];
     let arrResultTable=['productTable','salesStaffTable','clientTable','orderTable'];
     function hide(arr,id) {
@@ -28,23 +28,29 @@ $(function () {
         hide(arrFunctionTable,"querySalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
         $("#resultBlock").css("display","block");
-
+        $("#personalInformation").css("display","none");
     });
     $("#modifySalesStaff").click(function () {
         hide(arrFunctionTable,"modifySalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#addSalesStaff").click(function () {
        hide(arrFunctionTable,"addSalesStaffTable");
        hide(arrResultTable,"salesStaffTable");
        $("#resultBlock").css("display","none");
+        $("#personalInformation").css("display","none");
+
     });
     $("#delSalesStaff").click(function () {
         hide(arrFunctionTable,"delSalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#showModifySalesStaffModalBtn").click(function () {
@@ -57,12 +63,16 @@ $(function () {
         hide(arrFunctionTable,"queryProductTable");
         hide(arrResultTable,"productTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#modifyProduct").click(function () {
         hide(arrFunctionTable,"modifyProductTable");
         hide(arrResultTable,"productTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
 
     });
@@ -70,6 +80,8 @@ $(function () {
         hide(arrFunctionTable,"delProductTable");
         hide(arrResultTable,"productTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
 
     });
@@ -77,6 +89,8 @@ $(function () {
         hide(arrFunctionTable,"addProductTable");
         hide(arrResultTable,"productTable");
         $("#resultBlock").css("display","none");
+        $("#personalInformation").css("display","none");
+
     });
     $("#showModifyProductModalBtn").click(function () {
         $("#modifyProductModal").css("display","block");
@@ -95,23 +109,31 @@ $(function () {
         hide(arrFunctionTable,"queryClientTable");
         hide(arrResultTable,"clientTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#delClient").click(function () {
         hide(arrFunctionTable,"delClientTable");
         hide(arrResultTable,"clientTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#addClient").click(function () {
        hide(arrFunctionTable,"addClientTable");
        hide(arrResultTable,"clientTable");
        $("#resultBlock").css("display","none");
+        $("#personalInformation").css("display","none");
+
     });
     $("#modifyClient").click(function () {
         hide(arrFunctionTable,"modifyClientTable");
         hide(arrResultTable,"clientTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#showModifyClientModalBtn").click(function () {
@@ -124,12 +146,16 @@ $(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
     });
     $("#delOrder").click(function () {
         hide(arrFunctionTable,"delOrderTable");
         hide(arrResultTable,"orderTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
 
     });
@@ -137,6 +163,8 @@ $(function () {
         hide(arrFunctionTable,"modifyOrderTable");
         hide(arrResultTable,"orderTable");
         $("#resultBlock").css("display","block");
+        $("#personalInformation").css("display","none");
+
 
 
     });

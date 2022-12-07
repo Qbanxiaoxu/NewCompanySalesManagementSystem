@@ -81,7 +81,17 @@
             <!--        功能区-->
             <div id="functionBlock">
 <!--                个人信息管理-->
+                <div id="personalInformation" class="functionTable">
+                    <div class="functionTableHeader">
+                        <span class="functionTableClose">&times;</span>
+                        <h3>个人信息</h3>
+                    </div>
+                    <div>
+                        <table class="centerTable" id="personalTable">
 
+                        </table>
+                    </div>
+                </div>
 <!--                销售人员管理-->
                 <div id="querySalesStaffTable"   class="functionTable">
                     <div class="functionTableHeader">
@@ -162,7 +172,7 @@
                                 </tr>
                                 <tr><td>&nbsp;</td></tr>
                                 <tr>
-                                    <td><input type="submit" id="addModifySalesStaffModalBtn" value="增加"></td>
+                                    <td><input type="submit" id="addSalesStaffBtn" value="增加"></td>
                                 </tr>
                             </table>
                         </div>
@@ -227,7 +237,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">产品编号</td>
-                                <td><input type="text" placeholder="产品编号"></td>
+                                <td><input type="text" placeholder="产品编号" id="delProductByIdBox"></td>
                                 <td><button id="delProductBtn">删除</button></td>
                             </tr>
                         </table>
@@ -266,12 +276,12 @@
                                  <tr><td>&nbsp;</td></tr>
                                  <tr>
                                      <td class="label">产品库存量</td>
-                                     <td><input type="text" placeholder="产品库存量" id="addProductinventoryBox"></td>
+                                     <td><input type="text" placeholder="产品库存量" id="addProductInventoryBox"></td>
 
                                  </tr>
                                  <tr><td>&nbsp;</td></tr>
                                  <tr>
-                                     <td><input type="submit" id="addProductBtn" value="增加"></td>
+                                     <td colspan="2"><input type="submit" id="addProductBtn" value="增加"></td>
                                  </tr>
                              </table>
                          </div>
@@ -370,7 +380,7 @@
                                 </tr>
                                 <tr><td>&nbsp;</td></tr>
                                 <tr>
-                                    <td><input type="submit" id="addClientBtn" value="增加"></td>
+                                    <td colspan="2"><input type="submit" id="addClientBtn" value="增加"></td>
                                 </tr>
                             </table>
                         </div>
@@ -419,7 +429,7 @@
                         <table class="centerTable">
                             <tr>
                                 <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号" id="delProductBox"></td>
+                                <td><input type="text" placeholder="订单编号" id="delOrderByIdBox"></td>
                                 <td><button id="delOrderBtn">删除</button></td>
                             </tr>
                         </table>
@@ -432,12 +442,11 @@
                 <div id="resultHeader">
                     <h3>结果</h3>
                 </div>
-                <div id="resultTableBlock" class="resultTable">
-                    <table id="salesStaffTable"></table>
-                    <table id="productTable"></table>
-                    <table id="clientTable"></table>
-                    <table id="orderTable"></table>
-                    <table id="personalTable"></table>
+                <div id="resultTableBlock">
+                    <table id="salesStaffTable" class="resultTable"></table>
+                    <table id="productTable" class="resultTable"></table>
+                    <table id="clientTable" class="resultTable"></table>
+                    <table id="orderTable" class="resultTable"></table>
                 </div>
 
             </div>

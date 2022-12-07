@@ -162,6 +162,7 @@ public class CommonController {
      * @return {@link String}
      */
     @RequestMapping(value = "/Find", name = "find")
+    @ResponseBody
     public String findById(HttpServletRequest request) {
         String object = request.getParameter("object");
         int id = Integer.parseInt(request.getParameter("ID"));

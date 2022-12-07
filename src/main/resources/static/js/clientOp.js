@@ -1,6 +1,3 @@
-$(function () {
-
-});
 $(document).ready(() => {
 
     var nm=getUrlParam('username');

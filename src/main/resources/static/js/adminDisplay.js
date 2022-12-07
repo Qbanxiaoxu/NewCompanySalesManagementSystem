@@ -1,5 +1,8 @@
 $(function () {
 
+    // $(".menu-t2").click(function () {
+    //     $("#resultBlock").css("display","block");
+    // });
     let arrFunctionTable=[
         'querySalesStaffTable','delSalesStaffTable','modifySalesStaffTable','addSalesStaffTable',
         'queryProductTable','delProductTable','modifyProductTable','addProductTable',
@@ -24,40 +27,55 @@ $(function () {
     $("#querySalesStaff").click(function () {
         hide(arrFunctionTable,"querySalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#modifySalesStaff").click(function () {
         hide(arrFunctionTable,"modifySalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#addSalesStaff").click(function () {
        hide(arrFunctionTable,"addSalesStaffTable");
+       hide(arrResultTable,"salesStaffTable");
        $("#resultBlock").css("display","none");
     });
     $("#delSalesStaff").click(function () {
         hide(arrFunctionTable,"delSalesStaffTable");
         hide(arrResultTable,"salesStaffTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#showModifySalesStaffModalBtn").click(function () {
         $("#modifySalesStaffModal").css("display","block");
+
     });
 
     //产品管理
     $("#queryProduct").click(function () {
         hide(arrFunctionTable,"queryProductTable");
         hide(arrResultTable,"productTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#modifyProduct").click(function () {
         hide(arrFunctionTable,"modifyProductTable");
         hide(arrResultTable,"productTable");
+        $("#resultBlock").css("display","block");
+
 
     });
     $("#delProduct").click(function () {
         hide(arrFunctionTable,"delProductTable");
         hide(arrResultTable,"productTable");
+        $("#resultBlock").css("display","block");
+
 
     });
     $("#addProduct").click(function () {
         hide(arrFunctionTable,"addProductTable");
+        hide(arrResultTable,"productTable");
         $("#resultBlock").css("display","none");
     });
     $("#showModifyProductModalBtn").click(function () {
@@ -76,49 +94,56 @@ $(function () {
     $("#queryClient").click(function () {
         hide(arrFunctionTable,"queryClientTable");
         hide(arrResultTable,"clientTable");
+        $("#resultBlock").css("display","block");
 
     });
     $("#delClient").click(function () {
         hide(arrFunctionTable,"delClientTable");
         hide(arrResultTable,"clientTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#addClient").click(function () {
        hide(arrFunctionTable,"addClientTable");
-        $("#resultBlock").css("display","none");
-
+       hide(arrResultTable,"clientTable");
+       $("#resultBlock").css("display","none");
     });
     $("#modifyClient").click(function () {
         hide(arrFunctionTable,"modifyClientTable");
         hide(arrResultTable,"clientTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#showModifyClientModalBtn").click(function () {
         $("#modifyClientModal").css("display","block");
 
     });
-    $("#addClient").click(function () {
-        $("#addClientModal").css("display","block");
-    });
+
     //点击菜单栏触发订单管理事件
     $("#queryOrder").click(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#delOrder").click(function () {
         hide(arrFunctionTable,"delOrderTable");
         hide(arrResultTable,"orderTable");
+        $("#resultBlock").css("display","block");
+
 
     });
     $("#modifyOrder").click(function () {
         hide(arrFunctionTable,"modifyOrderTable");
         hide(arrResultTable,"orderTable");
+        $("#resultBlock").css("display","block");
+
 
     });
     $("#showModifyOrderModalBtn").click(function () {
         $("#modifyOrderModal").css("display","block");
 
     });
-
-
     $(".close").click(function () {
         $(".modal").css("display","none");
         $("#resultBlock").css("display","none");

@@ -1,8 +1,8 @@
 $(function () {
 
-    $(".menu-t2").click(function () {
-        // $("#resultBlock").css("display","block");
-    });
+    // $(".menu-t2").click(function () {
+    //     $("#resultBlock").css("display","block");
+    // });
     let arrFunctionTable=[
         'queryProductTable', 'queryOrderTable','delOrderTable','addOrderTable'];
 
@@ -23,10 +23,14 @@ $(function () {
         $("#resultBlock").css("display","block");
         hide(arrFunctionTable,"queryProductTable");
         hide(arrResultTable,"productTable");
+            $("#resultBlock").css("display","block");
+
     });
     $("#queryOrder").click(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
+            $("#resultBlock").css("display","block");
+
     });
 
 

@@ -37,23 +37,24 @@ $(function () {
             '<th>产品库存量</th>' +
             '</tr>'
         $("#productTable").append(th);
-
         $.ajax({
             type:'POST',
             url:'/Find',
             dataType:'json',
             data:{'object':'Product','ID':pid},
             success:function (data) {
-                //alert(data);
-
+                let product=JSON.parse(data);
                 let tds='';
-                tds='<td>'+data.productId+'</td>'+
-                    '<td>'+data.productName+'</td>'+
-                    '<td>'+data.productDescription+'</td>'+
-                    '<td>'+data.productPrice+'</td>'+
-                    '<td>'+data.productInventory+'</td>';
+                tds='<td>'+product.productId+'</td>'+
+                    '<td>'+product.productName+'</td>'+
+                    '<td>'+product.productDescription+'</td>'+
+                    '<td>'+product.productPrice+'</td>'+
+                    '<td>'+product.productInventory+'</td>';
                 $("#productTable").append('<tr>'+tds+'</tr>');
                 $("#productTable").css("display","block");
+            },
+            error:function (e) {
+              alert(e.errorText);
             }
         });
     }

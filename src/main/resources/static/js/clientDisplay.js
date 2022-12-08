@@ -31,26 +31,6 @@ $(function () {
         $("#resultBlock").css("display","block");
 
     });
-
-
-
-    // $("#addOrder").click(function () {
-    //     hide(arrFunctionTable,"addOrderTable");
-    //     $("#resultBlock").css("display","none");
-    // });
-    //
-    // $("#showAddOrderModalBtn").click(function () {
-    //     $("#addOrderModal").css("display","block");
-    // });
-    //
-    // $("#showShoppingCartModalBtn").click(function () {
-    //     $("#shoppingCartModal").css("display","block");
-    // });
-    //
-    // $(".close").click(function () {
-    //     $(".modal").css("display","none");
-    //     $("#resultBlock").css("display","none");
-    // });
     $("#delOrder").click(function () {
         hide(arrFunctionTable,"delOrderTable");
         hide(arrResultTable,"orderTable");

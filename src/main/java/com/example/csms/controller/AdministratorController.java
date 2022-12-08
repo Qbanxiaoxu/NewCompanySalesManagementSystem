@@ -21,9 +21,11 @@ public class AdministratorController {
     private ModifyService modifyService;
     private GetService getService;
 
-    public AdministratorController(AddService addService, DeleteService deleteService) {
+    public AdministratorController(AddService addService, DeleteService deleteService, QueryService queryService, ModifyService modifyService) {
         this.addService = addService;
         this.deleteService = deleteService;
+        this.queryService = queryService;
+        this.modifyService = modifyService;
     }
 
     /**

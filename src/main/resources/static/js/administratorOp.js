@@ -11,11 +11,11 @@ $(document).ready(() => {
 
     $("#queryPersonalInfo").click(function () {
         $("#personalTable").css("display","block");
-        document.getElementById("orderTable").innerHTML=""
-        document.getElementById("salesStaffTable").innerHTML=""
-        document.getElementById("productTable").innerHTML=""
-        document.getElementById("clientTable").innerHTML=""
-        document.getElementById("personalTable").innerHTML=""
+        // document.getElementById("orderTable").innerHTML=""
+        // document.getElementById("salesStaffTable").innerHTML=""
+        // document.getElementById("productTable").innerHTML=""
+        // document.getElementById("clientTable").innerHTML=""
+        // document.getElementById("personalTable").innerHTML=""
         // alert(nm+"\n"+pwd);
         $.post("/PersonalInfo",
             {
@@ -63,9 +63,35 @@ $(document).ready(() => {
                 }
             });
     });
+
+    $("#modifyPersonalInformationBtn").click(function () {
+       let ID=$("#modifyPersonalIDBox").val();
+       ID=Number(ID);
+       let name=$("#modifyPersonalNameBox").val();
+       let psd=$("#modifyPersonalPsdBox").val();
+       let gender=$("#modifyPersonalGenderBox").val();
+       let address=$("#modifyAddressBox").val();
+       let email=$("#modifyPersonalEmailBox").val();
+       $.post(
+           '/ModifyAdministrator',
+           {
+               administratorId:ID,
+               administratorPassword:psd,
+               administratorName:name,
+               administratorGender:gender,
+               administratorAddress:address,
+               administratorEmail:email,
+           },
+           function (status) {
+               if(status==="success"){
+                   alert("修改信息成功");
+               }
+           }
+       );
+    });
     //-------------------------------进行销售人员管理
     $("#getSalesStaffByIdBtn").click(function () {
-        document.getElementById("salesStaffTable").innerHTML='';
+        // document.getElementById("salesStaffTable").innerHTML='';
         let sId=$("#getSalesStaffByIdBox").val();
         sId=sId*1;
         $.post(
@@ -121,6 +147,8 @@ $(document).ready(() => {
 
 
     $("#getAllSalesStaffsBtn").click(function () {
+        alert("查询所有销售人员");
+        $("#salesStaffTable").css("display","block");
         getAllSalesStaffs();
     });
     function getAllSalesStaffs() {
@@ -151,7 +179,7 @@ $(document).ready(() => {
                         '<td>'+data[i].salesStaffGender+'</td>'+
                         '<td>'+data[i].salesStaffAddress+'</td>'+
                         '<td>'+data[i].salesStaffEmail+'</td>'+
-                        '<td>'+data[i].salesStaffSaraly+'</td>';
+                        '<td>'+data[i].salesStaffSalary+'</td>';
 
                     $("#salesStaffTable").append('<tr>'+tds+'</tr>');
                 }
@@ -187,7 +215,8 @@ $(document).ready(() => {
         let address=$("#addSalesStaffAddressBox").val();
         let email=$("#addSalesStaffEmailBox").val();
         let salary=$("#addSalesStaffSalaryBox").val();
-        salary=salary.parseInt();
+        salary=Number(salary);
+        alert(gender+address);
         $.post(
             '/AddSalesStaff',
             {
@@ -205,6 +234,38 @@ $(document).ready(() => {
             }
         )
     });
+
+    $("#modifySalesStaffBtn").click(function () {
+        let ID=$("#modifySalesStaffIdBox").val();
+        ID=Number(ID);
+        let name=$("#modifySalesStaffNameBox").val();
+
+        let psd=$("#modifySalesStaffPsdBox").val();
+        let gender=$("#modifySalesStaffGenderBox").val();
+        let address=$("#modifySalesStaffAddressBox").val();
+        let email=$("#modifySalesStaffEmailBox").val();
+        let salary=$("#modifySalesStaffSalaryBox").val();
+        salary=Number(salary);
+        alert(gender+address);
+        $.post(
+            '/ModifySalesStaff',
+            {
+                salesStaffId: ID,
+                salesStaffName: name,
+                salesStaffPassword:psd,
+                salesStaffEmail: email,
+                salesStaffGender: gender,
+                salesStaffAddress: address,
+                salesStaffSalary: salary,
+            },
+            function (status) {
+                if(status==="success"){
+                    alert("新增销售人员成功！")
+                }
+            }
+        )
+    });
+
 
     //------------------------------进行产品管理
     $("#delProductBtn").click(function () {
@@ -249,6 +310,32 @@ $(document).ready(() => {
             }
         );
     });
+
+    $("#modifyProductBtn").click(function () {
+        let pId=$("#modifyProductIdBox").val();
+        let pName=$("#modifyProductNameBox").val();
+        let pDescription=$("#modifyProductDescriptionBox").val();
+        let pPrice=$("#modifyProductPriceBox").val();
+        let pInventory=$("#modifyProductInventoryBox").val();
+        pPrice=Number(pPrice);
+        pInventory=Number(pInventory);
+        $.post(
+            '/ModifyProduct',
+            {
+                productId:pId,
+                productName: pName,
+                productDescription:pDescription,
+                productPrice: pPrice,
+                pInventory:pInventory,
+            },
+            function (status) {
+                if(status==="success"){
+                    alert("更改产品信息成功！")
+                }
+            }
+        );
+    });
+
 
     //-----------------------------进行客户管理
     $("#getClientByIdBtn").click(function () {
@@ -354,6 +441,32 @@ $(document).ready(() => {
         )
     });
 
+    $("#modifyClientBtn").click(function () {
+        let ID=$("#modifyClientIdBox").val();
+        ID=Number(ID);
+        let name=$("#modifyClientNameBox").val();
+        let psd=$("#modifyClientPsdBox").val();
+        let gender=$("#modifyClientGenderBox").val();
+        let address=$("#modifyClientGenderBox").val();
+        let email=$("#modifyClientEmailBox").val();
+        $.post(
+            '/ModifyClient',
+            {
+                clientId:ID,
+                clientPassword: psd,
+                clientName: name,
+                clientGender: gender,
+                clientAddress: address,
+                clientEmail: email,
+            },
+            function (status){
+                if(status === "success"){
+                    alert("更改成功！");
+                }
+            }
+
+        )
+    })
     $("#addClientBtn").click(function () {
         let cPsd=$('#addClientPsdBox').val();
         let cName=$("#addClientNameBox").val();
@@ -477,5 +590,29 @@ $(document).ready(() => {
                 }
             }
         )
+    });
+
+    $("#modifyOrderBtn").click(function () {
+       let id=$("#modifyOrderIdBox").val();
+       let time=$("#modifyOrderTimeBox").val();
+       let client=$("#modifyOrderClientBox").val();
+       let sales=$("#modifyOrderSalesBox").val();
+       let consumption=$("#modifyOrderConsumptionBox").val();
+       consumption=Number(consumption);
+       $.post(
+           '/ModifyOrder',
+           {
+               orderId:id,
+               orderTime:time,
+               clientId:client,
+               salesStaffId:sales,
+               consumption:consumption,
+           },
+           function (status) {
+               if(status ==="success"){
+                   alert("成功");
+               }
+           }
+       )
     });
 });

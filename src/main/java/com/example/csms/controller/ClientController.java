@@ -27,12 +27,21 @@ public class ClientController {
     private GetService getService;
     private LoginVerifyService loginVerifyService;
 
+    public ClientController(AddService addService, QueryService queryService, ModifyService modifyService, LoginVerifyService loginVerifyService) {
+        this.addService = addService;
+        this.queryService = queryService;
+        this.modifyService = modifyService;
+        this.loginVerifyService = loginVerifyService;
+    }
+
+
     /**
      * 查看订单信息
      *
      * @return {@link String}
      */
     @RequestMapping(value = "/QueryClientOrders", name = "查看与自己相关订单信息")
+    @ResponseBody
     public String viewOrdersInfo(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -101,7 +110,9 @@ public class ClientController {
 
     @RequestMapping(value = "/ModifyClient", name = "modify",method = RequestMethod.POST)
     @ResponseBody
-    public void modify(Client client){
+    public void modify(Client client)
+    {
         modifyService.modifyClient(client);
+
     }
 }

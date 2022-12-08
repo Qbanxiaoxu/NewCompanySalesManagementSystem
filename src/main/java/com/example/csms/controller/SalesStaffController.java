@@ -1,7 +1,5 @@
 package com.example.csms.controller;
 
-import com.example.csms.bean.Client;
-import com.example.csms.bean.Order;
 import com.example.csms.bean.SalesStaff;
 import com.example.csms.service.*;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 import static com.example.csms.controller.ClientController.getString;
 
@@ -25,6 +22,10 @@ public class SalesStaffController {
     private ModifyService modifyService;
     private GetService getService;
     private LoginVerifyService loginVerifyService;
+
+    public SalesStaffController(ModifyService modifyService) {
+        this.modifyService = modifyService;
+    }
 
     @RequestMapping(value = "/CheckTakeOrders",name = "查看接单信息")
     public String viewTakeOrdersInfo(HttpServletRequest request){

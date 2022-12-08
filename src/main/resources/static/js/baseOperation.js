@@ -56,7 +56,7 @@ $(function () {
                         html += "<td>" + product.productPrice + "</td>";
                         html += "</tr>";
                         html += "<tr>";
-                        html +=" <td class='label'>邮箱</td>";
+                        html +=" <td class='label'>产品库存量</td>";
                         html += "<td>" +product.productInventory + "</td>";
                         html += "</tr>";
                         html += "<tr>";
@@ -98,6 +98,7 @@ $(function () {
                             '<td>'+data[i].productInventory+'</td>';
                         $("#productTable").append('<tr>'+tds+'</tr>');
                     }
+                    $("#resultBlock").css("display","block");
                     $("#productTable").css("display","block");
                 }
             }

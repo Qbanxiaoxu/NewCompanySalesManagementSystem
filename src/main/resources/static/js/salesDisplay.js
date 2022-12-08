@@ -1,6 +1,6 @@
 $(function () {
     $(".menu-t1").click(function () {
-        $("#resultBlock").css("display","block");
+        // $("#resultBlock").css("display","block");
     });
     let arrFunctionTable=[
         'queryProductTable',
@@ -23,15 +23,21 @@ $(function () {
     $("#queryProduct").click(function () {
         hide(arrFunctionTable,"queryProductTable");
         hide(arrResultTable,"productTable");
+        $("#resultBlock").css("display","block");
+
     });
     $("#queryClient").click(function () {
         hide(arrFunctionTable,"queryClientTable");
         hide(arrResultTable,"clientTable");
+        $("#resultBlock").css("display","block");
+
 
     });
     $("#queryOrder").click(function () {
         hide(arrFunctionTable,"queryOrderTable");
         hide(arrResultTable,"orderTable");
+        $("#resultBlock").css("display","block");
+
     });
     //关闭功能窗口
     $(".functionTableClose").click(function () {

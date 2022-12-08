@@ -20,6 +20,7 @@ public class LoginVerifyController {
     @Resource
     private LoginVerifyService loginVerifyService;
 
+
     @RequestMapping(value = "/LoginVerify",name = "登录验证",method = RequestMethod.POST)
     public String loginMethod(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 

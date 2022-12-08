@@ -37,11 +37,10 @@
                 </li>
 
                 <li>
-                    <p class="menu-t1" >订单管理</p>
+                    <p class="menu-t1" id=>订单管理</p>
                     <ul class="hide">
-                        <li class="menu-t2" id="queryOrder">查询历史订单</li>
-                        <li class="menu-t2" id="delOrder">删除历史订单</li>
-                        <li class="menu-t2" id="addOrder">新增订单</li>
+                        <li class="menu-t2" id="queryFormerOrder">查看历史订单</li>
+                        <li class="menu-t2" id="addOrder">下单</li>
                     </ul>
                 </li>
             </ul>
@@ -59,6 +58,45 @@
                         </table>
                     </div>
                 </div>
+
+                <form>
+                    <div id="modifyPersonalInformationTable" class="functionTable">
+                        <div class="functionTableHeader">
+                            <span class="functionTableClose">&times;</span>
+                            <h3>修改个人信息</h3>
+                        </div>
+                        <div>
+                            <table class="centerTable">
+                                <tr>
+                                    <td class="label">ID</td>
+                                    <td><input  placeholder="ID" id="modifyIDBox"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">用户名</td>
+                                    <td><input  placeholder="用户名" id="modifyNameBox"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">密码</td>
+                                    <td><input  placeholder="密码" id="modifyPsdBox"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">性别</td>
+                                    <td><input  placeholder="性别" id="modifyGenderBox"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">地址</td>
+                                    <td><input  placeholder="地址" id="modifyAddressBox"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">邮箱</td>
+                                    <td><input  placeholder="邮箱" id="modifyEmailBox"></td>
+                                </tr>
+                                <tr><td><input id="modifyPersonalInformationBtn" value="确定" type="submit"></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+
 
                 <!--                    查询产品-->
                 <div id="queryProductTable"   class="functionTable">
@@ -78,23 +116,18 @@
                     </div>
                 </div>
 
-                <div id="queryOrderTable"   class="functionTable">
+                <div id="queryFormerOrderTable" class="functionTable">
                     <div class="functionTableHeader">
                         <span class="functionTableClose">&times;</span>
-                        <h3>查询订单信息</h3>
+                        <h3>查询历史订单</h3>
                     </div>
                     <div>
-                        <table class="centerTable">
+                        <table class="centerTable" id="orderTable">
                             <tr>
-                                <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号" id="queryOrderBox"></td>
-                                <td><button id="getOrderByIdBtn">查询</button></td>
-                                <td><button id="getAllOrdersBtn">查询所有订单</button></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-
                 <div id="addOrderTable" class="functionTable">
                     <div class="functionTableHeader">
                         <span class="functionTableClose">&times;</span>
@@ -109,23 +142,6 @@
                         </table>
                     </div>
                 </div>
-
-                <div id="delOrderTable" class="functionTable">
-                    <div class="functionTableHeader">
-                        <span class="functionTableClose">&times;</span>
-                        <h3>删除订单信息</h3>
-                    </div>
-                    <div>
-                        <table class="centerTable">
-                            <tr>
-                                <td class="label">订单编号</td>
-                                <td><input type="text" placeholder="订单编号"></td>
-                                <td><button id="delOrderBtn">删除</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
             </div>
             <!--                订单管理-->
 
@@ -135,7 +151,6 @@
                 </div>
                 <div class="resultTable">
                     <table id="productTable"></table>
-                    <table id="orderTable"></table>
                 </div>
             </div>
 

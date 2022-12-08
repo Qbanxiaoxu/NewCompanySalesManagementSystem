@@ -12,11 +12,11 @@ $(document).ready(() => {
     $("#querySelfInformation").click(function () {
         $("#resultBlock").css("display","none");
         $(".functionTable").css("display","none");
-        document.getElementById("orderTable").innerHTML=""
-        // document.getElementById("salesStaffTable").innerHTML=""
-        document.getElementById("productTable").innerHTML=""
-        document.getElementById("clientTable").innerHTML=""
-        document.getElementById("personalTable").innerHTML=""
+        // document.getElementById("orderTable").innerHTML=""
+        // // document.getElementById("salesStaffTable").innerHTML=""
+        // document.getElementById("productTable").innerHTML=""
+        // document.getElementById("clientTable").innerHTML=""
+        // document.getElementById("personalTable").innerHTML=""
         // alert(nm+"\n"+pwd);
         $.post("/PersonalInfo",
             {
@@ -69,11 +69,45 @@ $(document).ready(() => {
             });
     });
 
-    $("#getClientByIdBtn").click(function () {
-        let cId=$("#getClientByIdBox").val();
-        cId=Number(cId);
-        $.post(
-            '/'
-        )
+    // $("#getClientByIdBtn").click(function () {
+    //     let cId=$("#getClientByIdBox").val();
+    //     cId=Number(cId);
+    //     $.post(
+    //         '/'
+    //     )
+    // });
+
+    $("#modifySelfInformation").click(function () {
+        $("#modifyPersonalInformationTable").css("display","block");
+        $("#personalInformation").css("display","none");
+        $("#resultBlock").css("display","none");
     });
+    $("#modifyPersonalInformationBtn").click(function () {
+
+        let ID=$("#modifyPersonalIDBox").val();
+        ID=Number(ID);
+        let name=$("#modifyPersonalNameBox").val();
+        let psd=$("#modifyPersonalPsdBox").val();
+        let gender=$("#modifyPersonalGenderBox").val();
+        let email=$("#modifyPersonalEmailBox").val();
+        let address=$("#modifyPersonalAddressBox").val();
+        alert(gender+address);
+        $.post(
+            '/ModifySalesStaff',
+            {
+                salesStaffId:ID,
+                salesStaffName: name,
+                salesStaffPassword: psd,
+                salesStaffGender: gender,
+                salesStaffEmail: email,
+                salesStaffAddress: address,
+            },
+            function (status) {
+                if(status==="success"){
+                    alert("修改信息成功");
+                }
+            }
+        )
+    }
+    );
 });

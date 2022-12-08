@@ -4,96 +4,140 @@
 <mapper namespace="com.example.csms.mapper.ModifyMapper">
 <!--    UPDATE table_name SET column1=value1,column2=value2,... WHERE some_column=some_value;-->
     <update id="modifyAdministrator">
-        <if test="administratorPassword != null">
-            update administrators set administratorPassword=#{administratorPassword} where administratorId=#{administratorId}
-        </if>
-        <if test="administratorName != null">
-            update administrators set administratorName=#{administratorName} where administratorId=#{administratorId}
-        </if>
-        <if test="administratorGender != null">
-            update administrators set administratorGender=#{administratorGender} where administratorId=#{administratorId}
-        </if>
-        <if test="administratorAddress != null">
-            update administrators set administratorAddress=#{administratorAddress} where administratorId=#{administratorId}
-        </if>
-        <if test="administratorEmail != null">
-            update administrators set administratorEmail=#{administratorEmail} where administratorId=#{administratorId}
-        </if>
+        update administrators
+        <set>
+            <if test="administratorPassword != null">
+                administratorPassword=#{administratorPassword},
+            </if>
+            <if test="administratorName != null">
+                administratorName=#{administratorName},
+            </if>
+            <if test="administratorGender != null">
+                administratorGender=#{administratorGender},
+            </if>
+            <if test="administratorAddress != null">
+                administratorAddress=#{administratorAddress},
+            </if>
+            <if test="administratorEmail != null">
+                administratorEmail=#{administratorEmail},
+            </if>
+            <if test="administratorId !=null">
+                administratorId=#{administratorId},
+            </if>
+        </set>
+        where administratorId=#{administratorId}
     </update>
+
     <update id="modifyClient">
-        <if test="clientPassword != null">
-            update clients set clientPassword=#{clientPassword} where clientId=#{clientId}
-        </if>
-        <if test="clientName != null">
-            update clients set clientName=#{clientName} where clientId=#{clientId}
-        </if>
-        <if test="clientGender != null">
-            update clients set clientGender=#{clientGender} where clientId=#{clientId}
-        </if>
-        <if test="clientAddress != null">
-            update clients set clientAddress=#{clientAddress} where clientId=#{clientId}
-        </if>
-        <if test="clientEmail != null">
-            update clients set clientEmail=#{clientEmail} where clientId=#{clientId}
-        </if>
+        update clients
+        <set>
+            <if test="clientPassword != null">
+                clientPassword=#{clientPassword},
+            </if>
+            <if test="clientName != null">
+                clientName=#{clientName},
+            </if>
+            <if test="clientGender != null">
+                clientGender=#{clientGender},
+            </if>
+            <if test="clientAddress != null">
+                clientAddress=#{clientAddress},
+            </if>
+            <if test="clientEmail != null">
+                clientEmail=#{clientEmail},
+            </if>
+            <if test="clientId !=null">
+                clientId=#{clientId},
+            </if>
+        </set>
+        where clientId=#{clientId}
+
     </update>
     <update id="modifyOrder">
-        <if test="orderTime != null">
-            update orders set orderTime=#{orderTime} where orderId=#{orderId}
-        </if>
-        <if test="clientId != null">
-            update orders set clientId=#{clientId} where orderId=#{orderId}
-        </if>
-        <if test="salesStaffId != null">
-            update orders set salesStaffId=#{salesStaffId} where orderId=#{orderId}
-        </if>
-        <if test="consumption != null">
-            update orders set consumption=#{consumption} where orderId=#{orderId}
-        </if>
+        update orders
+        <set>
+            <if test="orderTime != null ">
+                orderTime=#{orderTime},
+            </if>
+            <if test="clientId != null">
+                clientId=#{clientId},
+            </if>
+            <if test="salesStaffId != null">
+                salesStaffId=#{salesStaffId},
+            </if>
+            <if test="consumption != null">
+                consumption=#{consumption},
+            </if>
+            <if test="orderId !=null">
+                orderId=#{orderId},
+            </if>
+        </set>
+        where orderId=#{productId}
     </update>
     <update id="modifyOrderDetail">
-        <if test="productId != null">
-            update orderdetails set productId=#{productId} where orderDetailId=#{orderDetailId}
-        </if>
-        <if test="productNumber != null">
-            update orderdetails set productNumber=#{productNumber} where orderDetailId=#{orderDetailId}
-        </if>
-        <if test="totalPrice != null">
-            update orderdetails set totalPrice=#{totalPrice} where orderDetailId=#{orderDetailId}
-        </if>
+        update orderdetails
+        <set>
+            <if test="productId != null">
+                productId=#{productId},
+            </if>
+            <if test="productNumber != null">
+                productNumber=#{productNumber},
+            </if>
+            <if test="totalPrice != null">
+                totalPrice=#{totalPrice},
+            </if>
+            <if test="productId !=null">
+                orderDetailId=#{orderDetailId},
+            </if>
+        </set>
+        where orderDetailId=#{orderDetailId}
     </update>
     <update id="modifyProduct">
-        <if test="productName != null">
-            update products set productName = #{productName} where productId=#{productId};
-        </if>
-        <if test="productDescription != null">
-            update products set productDescription = #{productDescription} where productId=#{productId};
-        </if>
-        <if test="productPrice != null">
-            update products set productPrice = #{productPrice} where productId=#{productId};
-        </if>
-        <if test="productInventory != null">
-            update products set productInventory = #{productInventory} where productId=#{productId};
-        </if>
+        update products
+        <set>
+            <if test="productName != null">
+                productName = #{productName},
+            </if>
+            <if test="productDescription != null">
+                productDescription = #{productDescription},
+            </if>
+            <if test="productPrice != null">
+                productPrice = #{productPrice},
+            </if>
+            <if test="productInventory != null">
+                productInventory = #{productInventory},
+            </if>
+            <if test="productId !=null">
+                productId=#{productId},
+            </if>
+        </set>
+        where productId=#{productId}
     </update>
     <update id="modifySalesStaff">
-        <if test="salesStaffPassword != null">
-            update salesstaffs set salesStaffPassword=#{salesStaffPassword} where salesStaffId=#{salesStaffId}
-        </if>
-        <if test="salesStaffName != null">
-            update salesstaffs set salesStaffName=#{salesStaffName} where salesStaffId=#{salesStaffId}
-        </if>
-        <if test="salesStaffGender != null">
-            update salesstaffs set salesStaffGender=#{salesStaffGender} where salesStaffId=#{salesStaffId}
-        </if>
-        <if test="salesStaffAddress != null">
-            update salesstaffs set salesStaffAddress=#{salesStaffAddress} where salesStaffId=#{salesStaffId}
-        </if>
-        <if test="salesStaffEmail != null">
-            update salesstaffs set salesStaffEmail=#{salesStaffEmail} where salesStaffId=#{salesStaffId}
-        </if>
-        <if test="salesStaffSalary != null">
-            update salesstaffs set salesStaffSalary=#{salesStaffSalary} where salesStaffId=#{salesStaffId}
-        </if>
+        update salesStaffs
+        <set>
+            <if test="salesStaffPassword != null">
+                salesStaffPassword=#{salesStaffPassword},
+            </if>
+            <if test="salesStaffName != null">
+                salesStaffName=#{salesStaffName},
+            </if>
+            <if test="salesStaffGender != null">
+                salesStaffGender=#{salesStaffGender},
+            </if>
+            <if test="salesStaffAddress != null">
+                salesStaffAddress=#{salesStaffAddress},
+            </if>
+            <if test="salesStaffEmail != null">
+                salesStaffEmail=#{salesStaffEmail},
+            </if>
+            <if test="salesStaffSalary != null">
+                salesStaffSalary=#{salesStaffSalary},
+            </if>
+            <if test="salesStaffId !=null">
+                salesStaffId=#{salesStaffId},
+            </if>
+        </set>
+        where salesStaffId=#{salesStaffId}
     </update>
 </mapper>

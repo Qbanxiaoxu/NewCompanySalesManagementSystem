@@ -25,12 +25,12 @@ $(function () {
         $("#resultBlock").css("display","block");
         $("#personalInformation").css("display","none");
     });
-    $("#queryOrder").click(function () {
-        hide(arrFunctionTable,"queryOrderTable");
-        hide(arrResultTable,"orderTable");
-        $("#resultBlock").css("display","block");
-
-    });
+    // $("#queryFormerOrder").click(function () {
+    //     hide(arrFunctionTable,"queryOrderTable");
+    //     hide(arrResultTable,"orderTable");
+    //     $("#resultBlock").css("display","block");
+    //
+    // });
     $("#delOrder").click(function () {
         hide(arrFunctionTable,"delOrderTable");
         hide(arrResultTable,"orderTable");

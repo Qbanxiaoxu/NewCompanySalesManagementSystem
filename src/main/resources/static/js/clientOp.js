@@ -102,7 +102,7 @@ $(document).ready(() => {
     $("#queryFormerOrder").click(function () {
         $("#resultBlock").css("display","none");
         $("#personalTable").css("display","none");
-        $("#modifySelfInformation").css("display","none");
+        $("#modifyPersonalInformationTable").css("display","none");
         $.post(
             '/QueryClientOrders',
             {
@@ -126,11 +126,11 @@ $(document).ready(() => {
                    }
                    document.getElementById("orderTable").innerHTML=html;
                    $("#queryFormerOrderTable").css("display","block");
+                   $("#orderTable").css("display","block");
                }
                else {
                    alert("error");
                }
             }
         )
-    });
-});
+    });});
